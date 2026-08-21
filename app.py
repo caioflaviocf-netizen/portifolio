@@ -72,16 +72,16 @@ st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
-    /* BACKGROUND TEMÁTICO DE CONSTRUÇÃO COM GUINDASTE / PÔR DO SOL */
+    /* BACKGROUND TEMÁTICO DE CONSTRUÇÃO */
     .stApp {{
         background: linear-gradient(rgba(11, 15, 25, 0.88), rgba(15, 23, 42, 0.92)), 
                     url('{bg_image_css}') center/cover fixed no-repeat !important;
         font-family: 'Inter', sans-serif !important;
     }}
 
-    h1, h2, h3, h4, h5, h6 {{
+    h1, h2, h3, h5, h6 {{
         font-family: 'Montserrat', sans-serif !important;
-        color: #041b3b !important;
+        color: #F8FAFC !important;
         font-weight: 700;
     }}
     p, span, label, li {{
@@ -103,7 +103,7 @@ st.markdown(f"""
     .council-text-title {{
         font-size: 0.75rem !important;
         font-weight: 800 !important;
-        color: #041b3b !important;
+        color: #0F172A !important;
         line-height: 1.2 !important;
         text-align: left !important;
         font-family: 'Montserrat', sans-serif !important;
@@ -118,12 +118,12 @@ st.markdown(f"""
     /* SELECTBOX & DROPDOWN */
     div[data-baseweb="select"] > div {{
         background-color: #FFFFFF !important;
-        color: #041b3b !important;
+        color: #0F172A !important;
         border: 1px solid #CBD5E1 !important;
         border-radius: 6px !important;
     }}
     div[data-baseweb="select"] span {{
-        color: #041b3b !important;
+        color: #0F172A !important;
         font-weight: 600 !important;
     }}
     div[data-baseweb="select"] svg {{
@@ -137,7 +137,7 @@ st.markdown(f"""
     }}
     li[role="option"] {{
         background-color: #FFFFFF !important;
-        color: #041b3b !important;
+        color: #0F172A !important;
         font-weight: 600 !important;
         font-size: 0.90rem !important;
         padding: 10px 14px !important;
@@ -152,7 +152,7 @@ st.markdown(f"""
         border-radius: 6px !important;
     }}
     div[data-baseweb="input"] input {{
-        color: #041b3b !important;
+        color: #0F172A !important;
         font-weight: 600 !important;
     }}
 
@@ -187,26 +187,29 @@ st.markdown(f"""
         text-decoration: underline;
     }}
 
-    /* HERO BANNER */
+    /* HERO BANNER RESPONSIVO */
     .hero-banner-pro {{
         position: relative;
         background: linear-gradient(135deg, rgba(11, 15, 25, 0.92) 0%, rgba(15, 23, 42, 0.95) 60%, rgba(243, 112, 33, 0.8) 100%), 
                     url('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?w=1600&q=80') center/cover no-repeat !important;
         border-radius: 12px;
-        padding: 40px 45px;
+        padding: clamp(20px, 4vw, 40px);
         margin-bottom: 25px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         border-left: 8px solid #F37021;
+        box-sizing: border-box;
+        overflow: hidden;
     }}
     .hero-flex-wrapper {{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 30px;
+        gap: 24px;
+        flex-wrap: wrap-reverse;
     }}
     .hero-profile-photo {{
-        width: 195px;
-        height: 195px;
+        width: clamp(140px, 20vw, 195px);
+        height: clamp(140px, 20vw, 195px);
         border-radius: 50%;
         object-fit: cover;
         object-position: top center;
@@ -218,7 +221,7 @@ st.markdown(f"""
     .hero-pretitle-pro {{
         color: #FB923C !important;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.95rem;
+        font-size: clamp(0.75rem, 2vw, 0.95rem);
         font-weight: 800;
         letter-spacing: 2px;
         text-transform: uppercase;
@@ -227,7 +230,7 @@ st.markdown(f"""
     .hero-headline-pro {{
         color: #FFFFFF !important;
         font-family: 'Montserrat', sans-serif;
-        font-size: 2.35rem;
+        font-size: clamp(1.4rem, 4.5vw, 2.35rem);
         font-weight: 900;
         line-height: 1.2;
         margin: 0 0 14px 0;
@@ -236,7 +239,7 @@ st.markdown(f"""
     }}
     .hero-description-pro {{
         color: #F1F5F9 !important;
-        font-size: 1.02rem;
+        font-size: clamp(0.88rem, 2vw, 1.02rem);
         line-height: 1.6;
         max-width: 820px;
         margin-bottom: 20px;
@@ -252,7 +255,7 @@ st.markdown(f"""
         border-radius: 6px;
         font-family: 'Montserrat', sans-serif;
         font-weight: 800;
-        font-size: 0.94rem;
+        font-size: clamp(0.8rem, 2.2vw, 0.94rem);
         letter-spacing: 1px;
         text-transform: uppercase;
         text-decoration: none;
@@ -391,7 +394,7 @@ st.markdown(f"""
         font-weight: 800 !important;
     }}
 
-    /* CARDS DE CONTEÚDO */
+    /* ================= CARDS DE CONTEÚDO (FONTE ESCURA FIXA) ================= */
     .card-pro-content {{
         background-color: rgba(255, 255, 255, 0.95) !important;
         border: 1px solid #CBD5E1 !important;
@@ -401,17 +404,22 @@ st.markdown(f"""
         margin-bottom: 18px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }}
+    div[data-testid="stMarkdownContainer"] .card-pro-content h4,
     .card-pro-content h4 {{
-        color: #041b3b !important;
-        font-size: 1.15rem;
-        font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 8px;
+        font-family: 'Montserrat', sans-serif !important;
+        color: #0F172A !important;
+        font-size: 1.15rem !important;
+        font-weight: 800 !important;
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
     }}
-    .card-pro-content p, .card-pro-content li {{
+    div[data-testid="stMarkdownContainer"] .card-pro-content p,
+    div[data-testid="stMarkdownContainer"] .card-pro-content li,
+    .card-pro-content p, 
+    .card-pro-content li {{
         color: #1E293B !important;
-        font-size: 0.94rem;
-        line-height: 1.6;
+        font-size: 0.94rem !important;
+        line-height: 1.6 !important;
     }}
     .card-pro-content ul {{
         margin: 6px 0;
@@ -451,7 +459,7 @@ st.markdown(f"""
         font-family: 'Montserrat', sans-serif !important;
         font-size: 1.05rem !important;
         font-weight: 800 !important;
-        color: #041b3b !important;
+        color: #0F172A !important;
         margin: 0 !important;
     }}
     .card-tool-category {{
@@ -481,7 +489,7 @@ st.markdown(f"""
         position: relative !important;
     }}
     .card-chart-wrapper h4 {{
-        color: #041b3b !important;
+        color: #0F172A !important;
         font-size: 1.12rem !important;
         font-weight: 800 !important;
         font-family: 'Montserrat', sans-serif !important;
@@ -499,7 +507,7 @@ st.markdown(f"""
         margin-bottom: 12px !important;
     }}
     .eff-card-title {{
-        color: #041b3b !important;
+        color: #0F172A !important;
         font-weight: 800 !important;
         font-size: 0.95rem !important;
         font-family: 'Montserrat', sans-serif !important;
@@ -525,7 +533,7 @@ st.markdown(f"""
     .badge-norma-tag {{
         display: inline-block;
         background-color: #F1F5F9 !important;
-        color: #041b3b !important;
+        color: #0F172A !important;
         padding: 3px 8px;
         border-radius: 4px;
         font-size: 0.8rem;
@@ -536,7 +544,7 @@ st.markdown(f"""
     .badge-tool-tag {{
         display: inline-block;
         background-color: #F8FAFC !important;
-        color: #041b3b !important;
+        color: #0F172A !important;
         padding: 3px 8px;
         border-radius: 4px;
         font-size: 0.78rem;
@@ -634,8 +642,8 @@ with nav_c1:
     """, unsafe_allow_html=True)
 
 with nav_c2:
-    cft_img_html = f'<img src="{cft_b64}" height="42" style="object-fit:contain;" alt="CFT">' if cft_b64 else '<span style="font-weight:800; color:#041b3b;">CFT</span>'
-    crea_img_html = f'<img src="{crea_b64}" height="42" style="object-fit:contain;" alt="CREA-SP">' if crea_b64 else '<span style="font-weight:800; color:#041b3b;">CREA-SP</span>'
+    cft_img_html = f'<img src="{cft_b64}" height="42" style="object-fit:contain;" alt="CFT">' if cft_b64 else '<span style="font-weight:800; color:#0F172A;">CFT</span>'
+    crea_img_html = f'<img src="{crea_b64}" height="42" style="object-fit:contain;" alt="CREA-SP">' if crea_b64 else '<span style="font-weight:800; color:#0F172A;">CREA-SP</span>'
     
     st.markdown(f"""
     <div class="council-box-header">
@@ -771,7 +779,7 @@ with tab_resumo:
     st.markdown("### 📌 Resumo Profissional")
     st.markdown("""
     <div class="card-pro-content" style="border-left: 6px solid #F37021;">
-        <p style="font-size: 1.05rem; line-height: 1.7; color: #041b3b; font-weight: 500;">
+        <p style="font-size: 1.05rem; line-height: 1.7; color: #0F172A !important; font-weight: 500;">
             Sou <b>Engenheiro de Produção e Mecânico (CREA/CFT)</b> com <b>10 anos de experiência</b> como Responsável Técnico e Projetista. 
             Lidero projetos multidisciplinares integrando PMO/PCP ao campo para otimizar Capex/Opex. 
             Diferencio-me pelo uso de <b>Engenharia de Dados e BIM 5D</b> na gestão de ativos, reduzindo lead time e garantindo alta disponibilidade. 
@@ -786,7 +794,7 @@ with tab_resumo:
     with comp1:
         st.markdown("""
         <div class="card-pro-content">
-            <h4>📅 Planejamento e Gestão</h4>
+            <h4 style="color: #0F172A !important;">📅 Planejamento e Gestão</h4>
             <p>Estruturação de governança em PMO e controle físico-financeiro de Capex/Opex através de EAP e Caminho Crítico (CPM). Elaboração de histogramas de recursos, curvas S de avanço e matrizes probabilísticas de risco com Primavera P6 e MS Project. Foco em previsibilidade contratual, otimização de lead time e alinhamento estratégico entre planejamento executivo e rotinas de campo.</p>
             <span class="badge-tool-tag">Primavera P6</span><span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">PMO / PCP</span><span class="badge-tool-tag">Gestão de Riscos</span>
         </div>
@@ -794,7 +802,7 @@ with tab_resumo:
         
         st.markdown("""
         <div class="card-pro-content">
-            <h4>📊 Processos e Dados</h4>
+            <h4 style="color: #0F172A !important;">📊 Processos e Dados</h4>
             <p>Engenharia de dados aplicada à otimização operacional e automação de rotinas industriais. Desenvolvimento de pipelines de dados em Python e bancos SQLite para rastreabilidade de ativos e auditorias técnicas. Aplicação de Lean Six Sigma (DMAIC, VSM e Kaizen) com modelagem de dashboards em Power BI para monitoramento de KPIs estratégicos, eliminação de gargalos e tomada de decisão ágil.</p>
             <span class="badge-tool-tag">Python</span><span class="badge-tool-tag">SQL / SQLite</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">Lean Six Sigma</span>
         </div>
@@ -802,7 +810,7 @@ with tab_resumo:
         
         st.markdown("""
         <div class="card-pro-content">
-            <h4>🏛️ Infraestrutura e Normas</h4>
+            <h4 style="color: #0F172A !important;">🏛️ Infraestrutura e Normas</h4>
             <p>Concepção e homologação de infraestruturas elétricas e de telecomunicações de alta disponibilidade. Certificação internacional Furukawa FCP Master para redes ópticas e Data Centers. Aprovação de mais de 20 projetos de subestações e baixa tensão junto à CPFL (GED-13), coordenação integral de processos de PPCI/AVCB e emissão de laudos de engenharia legal com respaldo via CREA e CFT.</p>
             <span class="badge-tool-tag">Telecom (FCP Master)</span><span class="badge-tool-tag">AVCB</span><span class="badge-tool-tag">CPFL / GED-13</span><span class="badge-tool-tag">NRs / ABNT</span>
         </div>
@@ -811,7 +819,7 @@ with tab_resumo:
     with comp2:
         st.markdown("""
         <div class="card-pro-content">
-            <h4>📐 Projetos e Modelagem</h4>
+            <h4 style="color: #0F172A !important;">📐 Projetos e Modelagem</h4>
             <p>Engenharia de detalhamento e modelagem paramétrica em ambiente BIM 5D, integrando geometria 3D, cronograma e orçamentação (B.O.Q.). Compatibilização multidisciplinar com detecção de interferências (Clash Detection) em Navisworks e Revit. Cálculo e detalhamento de estruturas metálicas (Pipe Racks), tubulações em Plant 3D e ativos mecânicos em SolidWorks com total conformidade ABNT.</p>
             <span class="badge-tool-tag">Revit (BIM 5D)</span><span class="badge-tool-tag">SolidWorks</span><span class="badge-tool-tag">Plant 3D</span><span class="badge-tool-tag">AutoCAD Avançado</span>
         </div>
@@ -819,7 +827,7 @@ with tab_resumo:
         
         st.markdown("""
         <div class="card-pro-content">
-            <h4>🔧 Manutenção e Ativos</h4>
+            <h4 style="color: #0F172A !important;">🔧 Manutenção e Ativos</h4>
             <p>Gestão da confiabilidade e integridade operacional de ativos de missão crítica sob metodologia RCM e TPM. Elaboração e auditoria de PMOC hospitalar/industrial (Anvisa e NBR 7256) em sistemas de climatização e utilidades. Monitoramento de KPIs de performance (OEE, MTBF e MTTR), implementação de rotinas preditivas (termografia e vibração) e parametrização de ordens via IBM Maximo.</p>
             <span class="badge-tool-tag">IBM Maximo</span><span class="badge-tool-tag">TPM</span><span class="badge-tool-tag">OEE / Confiabilidade</span><span class="badge-tool-tag">PMOC / RCM</span>
         </div>
@@ -832,10 +840,10 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021;">L. Parice</h4>
+            <h4 style="margin:0; color:#F37021 !important;">L. Parice</h4>
             <span class="badge-cft-tag">05/2026 - Atual</span>
         </div>
-        <p style="font-weight:700; color:#041b3b; margin-bottom:8px;">Engenheiro de Planejamento e Processos</p>
+        <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Engenheiro de Planejamento e Processos</p>
         <p>Atuação focada na gestão de ativos de missão crítica e utilidades hospitalares. Classificação de criticidade e aplicação de RCM (Manutenção Centrada na Confiabilidade) para sistemas de climatização (chillers e fancoils) prioritários em UTIs e centros cirúrgicos.</p>
         <ul>
             <li>Gestão integral do <b>PMOC</b> (Plano de Manutenção, Operação e Controle), garantindo qualidade do ar e integridade de filtros HEPA sob diretrizes Anvisa e NBR 7256.</li>
@@ -850,10 +858,10 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021;">Autônomo</h4>
+            <h4 style="margin:0; color:#F37021 !important;">Autônomo</h4>
             <span class="badge-cft-tag">01/2025 - Atual</span>
         </div>
-        <p style="font-weight:700; color:#041b3b; margin-bottom:8px;">Engenheiro Consultor de Projetos e Instalações</p>
+        <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Engenheiro Consultor de Projetos e Instalações</p>
         <p>Consultoria multidisciplinar e viabilização de Capex/Opex com emissão de ARTs e TRTs.</p>
         <ul>
             <li>Cálculo estrutural, hidráulico, elétrico e mecânico, com detalhamento em <b>BIM 5D (Revit/SolidWorks)</b>.</li>
@@ -867,10 +875,10 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021;">Tracevia S/A</h4>
+            <h4 style="margin:0; color:#F37021 !important;">Tracevia S/A</h4>
             <span class="badge-cft-tag">08/2025 - 11/2025</span>
         </div>
-        <p style="font-weight:700; color:#041b3b; margin-bottom:8px;">Engenheiro de Planejamento</p>
+        <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Engenheiro de Planejamento</p>
         <p>Gestão estratégica de projetos de infraestrutura tecnológica (ITS) e controle físico-financeiro sob práticas PMBOK.</p>
         <ul>
             <li>Desenvolvimento em <b>Python e SQLite</b> para rastreabilidade de ativos e logística em tempo real.</li>
@@ -884,10 +892,10 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021;">Grupo Garcia</h4>
+            <h4 style="margin:0; color:#F37021 !important;">Grupo Garcia</h4>
             <span class="badge-cft-tag">03/2018 - 01/2025</span>
         </div>
-        <p style="font-weight:700; color:#041b3b; margin-bottom:8px;">Supervisor de Projetos</p>
+        <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Supervisor de Projetos</p>
         <p>Estruturação do departamento técnico e liderança de equipes multidisciplinares.</p>
         <ul>
             <li>Padronização em blocos dinâmicos CAD com <b>redução de 25% no tempo de elaboração</b> de projetos.</li>
@@ -1382,7 +1390,7 @@ with tab_analytics:
             values='Quantidade',
             names='Disciplina',
             hole=0.52,
-            color_discrete_sequence=['#F37021', '#041b3b', '#EA580C', '#334155', '#FB923C', '#64748B']
+            color_discrete_sequence=['#F37021', '#0F172A', '#EA580C', '#334155', '#FB923C', '#64748B']
         )
         fig_pie.update_traces(
             textposition='inside',
@@ -1392,7 +1400,7 @@ with tab_analytics:
         )
         fig_pie.update_layout(
             template="plotly_white",
-            font=dict(family="Montserrat, Inter, sans-serif", color="#041b3b", size=12),
+            font=dict(family="Montserrat, Inter, sans-serif", color="#0F172A", size=12),
             paper_bgcolor='#FFFFFF',
             plot_bgcolor='#FFFFFF',
             margin=dict(l=10, r=10, t=10, b=60),
@@ -1404,7 +1412,7 @@ with tab_analytics:
                 y=-0.08,
                 xanchor="center",
                 x=0.5,
-                font=dict(color="#041b3b", size=11, family="Montserrat")
+                font=dict(color="#0F172A", size=11, family="Montserrat")
             )
         )
         st.plotly_chart(fig_pie, use_container_width=True, theme=None, config=PLOTLY_CONFIG)
@@ -1425,13 +1433,13 @@ with tab_analytics:
         )
         fig_bar_ano.update_traces(
             textposition='outside',
-            textfont=dict(color="#041b3b", size=13, family="Montserrat"),
+            textfont=dict(color="#0F172A", size=13, family="Montserrat"),
             marker=dict(line=dict(color='#C2410C', width=1)),
             cliponaxis=False
         )
         fig_bar_ano.update_layout(
             template="plotly_white",
-            font=dict(family="Montserrat, Inter, sans-serif", color="#041b3b", size=12),
+            font=dict(family="Montserrat, Inter, sans-serif", color="#0F172A", size=12),
             paper_bgcolor='#FFFFFF',
             plot_bgcolor='#FFFFFF',
             margin=dict(l=10, r=10, t=45, b=10),
@@ -1440,15 +1448,15 @@ with tab_analytics:
             xaxis=dict(
                 tickmode='linear',
                 dtick=1,
-                title=dict(text="Ano de Emissão", font=dict(color="#041b3b", size=13, family="Montserrat")),
-                tickfont=dict(color="#041b3b", size=12, family="Montserrat"),
+                title=dict(text="Ano de Emissão", font=dict(color="#0F172A", size=13, family="Montserrat")),
+                tickfont=dict(color="#0F172A", size=12, family="Montserrat"),
                 showgrid=False,
                 linecolor='#94A3B8',
                 fixedrange=True
             ),
             yaxis=dict(
-                title=dict(text="Quantidade", font=dict(color="#041b3b", size=13, family="Montserrat")),
-                tickfont=dict(color="#041b3b", size=12, family="Montserrat"),
+                title=dict(text="Quantidade", font=dict(color="#0F172A", size=13, family="Montserrat")),
+                tickfont=dict(color="#0F172A", size=12, family="Montserrat"),
                 gridcolor='#E2E8F0',
                 linecolor='#94A3B8',
                 range=[0, 18],
@@ -1473,15 +1481,15 @@ with tab_analytics:
             orientation='h',
             text='Volume',
             color='Volume',
-            color_continuous_scale=['#FFEDD5', '#F37021', '#041b3b']
+            color_continuous_scale=['#FFEDD5', '#F37021', '#0F172A']
         )
         fig_cidade.update_traces(
             textposition='outside',
-            textfont=dict(color='#041b3b', size=12, family="Montserrat")
+            textfont=dict(color='#0F172A', size=12, family="Montserrat")
         )
         fig_cidade.update_layout(
             template="plotly_white",
-            font=dict(family="Montserrat, Inter, sans-serif", color="#041b3b", size=12),
+            font=dict(family="Montserrat, Inter, sans-serif", color="#0F172A", size=12),
             paper_bgcolor='#FFFFFF',
             plot_bgcolor='#FFFFFF',
             margin=dict(l=140, r=25, t=10, b=10),
@@ -1491,12 +1499,12 @@ with tab_analytics:
                 autorange="reversed",
                 title=None,
                 automargin=True,
-                tickfont=dict(color="#041b3b", size=12, family="Montserrat"),
+                tickfont=dict(color="#0F172A", size=12, family="Montserrat"),
                 fixedrange=True
             ),
             xaxis=dict(
-                title=dict(text="Documentos Emitidos", font=dict(color="#041b3b", size=13, family="Montserrat")),
-                tickfont=dict(color="#041b3b", size=12, family="Montserrat"),
+                title=dict(text="Documentos Emitidos", font=dict(color="#0F172A", size=13, family="Montserrat")),
+                tickfont=dict(color="#0F172A", size=12, family="Montserrat"),
                 gridcolor='#E2E8F0',
                 linecolor='#94A3B8',
                 fixedrange=True
@@ -1514,7 +1522,7 @@ with tab_analytics:
             <div class="eff-card-title">⚡ Otimização de Ciclo Técnico (-25%)</div>
             <p class="eff-card-desc">Redução de <b>25% no lead time</b> de elaboração através de blocos dinâmicos CAD e padronização de famílias BIM.</p>
         </div>
-        <div class="eff-card-box" style="border-left-color:#041b3b !important;">
+        <div class="eff-card-box" style="border-left-color:#0F172A !important;">
             <div class="eff-card-title">📈 Retorno Operacional (+10%)</div>
             <p class="eff-card-desc">Incremento anual no faturamento pela mitigação rigorosa de retrabalhos e compatibilização em obra.</p>
         </div>
@@ -1565,7 +1573,7 @@ with tab_acervo:
             st.markdown(f"""
             <div class="card-pro-content" style="margin-bottom: 12px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                    <h4 style="margin:0; color:#041b3b;">{row['titulo']}</h4>
+                    <h4 style="margin:0; color:#0F172A !important;">{row['titulo']}</h4>
                     <span class="badge-cft-tag">{row['conselho']} • {row['id_doc']}</span>
                 </div>
                 <p style="margin:2px 0 6px 0; color:#475569; font-size:0.88rem;">
@@ -1587,7 +1595,7 @@ with tab_formacao:
     with f_col1:
         st.markdown("""
         <div class="card-pro-content">
-            <h4>🎓 Ensino Superior & Pós-Graduações</h4>
+            <h4 style="color: #0F172A !important;">🎓 Ensino Superior & Pós-Graduações</h4>
             <ul>
                 <li><b>Pós-graduação em Engenharia de Controle e Automação</b> – Faculdade Anhanguera (Concluído 01/2026)</li>
                 <li><b>Pós-graduação em Engenharia de Estruturas Metálicas</b> – Faculdade Anhanguera (Concluído 01/2026)</li>
@@ -1603,7 +1611,7 @@ with tab_formacao:
     with f_col2:
         st.markdown("""
         <div class="card-pro-content">
-            <h4>⚙️ Formações Técnicas (ETEC)</h4>
+            <h4 style="color: #0F172A !important;">⚙️ Formações Técnicas (ETEC)</h4>
             <ul>
                 <li><b>Técnico em Mecânica (2021)</b> – ETEC Aristóteles Ferreira</li>
                 <li><b>Especialização Técnica em Gestão de Projetos (2020)</b> – ETEC Praia Grande</li>
@@ -1618,7 +1626,7 @@ with tab_formacao:
         
     st.markdown("""
     <div class="card-pro-content">
-        <h4>🌐 Certificações Internacionais & Habilitações</h4>
+        <h4 style="color: #0F172A !important;">🌐 Certificações Internacionais & Habilitações</h4>
         <ul>
             <li><b>Certificações:</b> Autodesk Certified User (ACU), Furukawa FCP Professional e Furukawa FCP Master.</li>
             <li><b>Idiomas:</b> Inglês (técnico para leitura), Espanhol (básico).</li>
