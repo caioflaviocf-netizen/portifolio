@@ -1819,7 +1819,7 @@ with tab_contato:
                     with st.spinner("Enviando mensagem para caioflavio.cf@gmail.com..."):
                         try:
                             # Endpoint ativo do FormSubmit (bujipo)
-                            url_endpoint = "https://formsubmit.co/ajax/bujipo"
+                            url_endpoint = "https://formsubmit.co/el/bujipo"
                             
                             payload = {
                                 "Nome/Empresa": nome_contato,
