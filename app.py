@@ -832,6 +832,14 @@ with tab_resumo:
         </div>
         """, unsafe_allow_html=True)
 
+        st.markdown("""
+        <div class="card-pro-content">
+            <span class="card-project-title">🤝 Liderança e Integração</span>
+            <p>Gestão de equipes multidisciplinares e coordenação de frentes de trabalho simultâneas. Interface estratégica entre engenharia, suprimentos e campo para garantia de metas contratuais e eficiência operacional.</p>
+            <span class="badge-tool-tag">PMBOK</span><span class="badge-tool-tag">Gestão de Contratos</span><span class="badge-tool-tag">Liderança Ágil</span><span class="badge-tool-tag">Planejamento de Campo</span>
+        </div>
+        """, unsafe_allow_html=True)
+        
 # --- ABA 2: EXPERIÊNCIAS PROFISSIONAIS ---
 with tab_experiencia:
     st.markdown("### 💼 Histórico & Experiência Profissional")
