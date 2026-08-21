@@ -66,22 +66,21 @@ vray_b64 = carregar_arquivo_base64(["VRAY.png", "vray.png", "V-RAY.png", "v-ray.
 pdf_acervo_b64 = carregar_arquivo_base64(["registradas_2.pdf", "registradas.pdf", "acervo_tecnico.pdf"], "application/pdf")
 
 # -----------------------------------------------------------------------------
-# 3. CSS EXECUTIVO
+# 3. CSS EXECUTIVO COM CORREÇÃO DE CONTRASTE
 # -----------------------------------------------------------------------------
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
-    /* BACKGROUND TEMÁTICO DE CONSTRUÇÃO COM GUINDASTE / PÔR DO SOL */
     .stApp {{
         background: linear-gradient(rgba(11, 15, 25, 0.88), rgba(15, 23, 42, 0.92)), 
                     url('{bg_image_css}') center/cover fixed no-repeat !important;
         font-family: 'Inter', sans-serif !important;
     }}
 
-    h1, h2, h3, h4, h5, h6 {{
+    h1, h2, h3, h5, h6 {{
         font-family: 'Montserrat', sans-serif !important;
-        color: #0F172A !important;
+        color: #F8FAFC !important;
         font-weight: 700;
     }}
     p, span, label, li {{
@@ -187,26 +186,29 @@ st.markdown(f"""
         text-decoration: underline;
     }}
 
-    /* HERO BANNER */
+    /* HERO BANNER RESPONSIVO */
     .hero-banner-pro {{
         position: relative;
         background: linear-gradient(135deg, rgba(11, 15, 25, 0.92) 0%, rgba(15, 23, 42, 0.95) 60%, rgba(243, 112, 33, 0.8) 100%), 
                     url('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?w=1600&q=80') center/cover no-repeat !important;
         border-radius: 12px;
-        padding: 40px 45px;
+        padding: clamp(20px, 4vw, 40px);
         margin-bottom: 25px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         border-left: 8px solid #F37021;
+        box-sizing: border-box;
+        overflow: hidden;
     }}
     .hero-flex-wrapper {{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 30px;
+        gap: 24px;
+        flex-wrap: wrap-reverse;
     }}
     .hero-profile-photo {{
-        width: 195px;
-        height: 195px;
+        width: clamp(140px, 20vw, 195px);
+        height: clamp(140px, 20vw, 195px);
         border-radius: 50%;
         object-fit: cover;
         object-position: top center;
@@ -218,7 +220,7 @@ st.markdown(f"""
     .hero-pretitle-pro {{
         color: #FB923C !important;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.95rem;
+        font-size: clamp(0.75rem, 2vw, 0.95rem);
         font-weight: 800;
         letter-spacing: 2px;
         text-transform: uppercase;
@@ -227,7 +229,7 @@ st.markdown(f"""
     .hero-headline-pro {{
         color: #FFFFFF !important;
         font-family: 'Montserrat', sans-serif;
-        font-size: 2.35rem;
+        font-size: clamp(1.4rem, 4.5vw, 2.35rem);
         font-weight: 900;
         line-height: 1.2;
         margin: 0 0 14px 0;
@@ -236,7 +238,7 @@ st.markdown(f"""
     }}
     .hero-description-pro {{
         color: #F1F5F9 !important;
-        font-size: 1.02rem;
+        font-size: clamp(0.88rem, 2vw, 1.02rem);
         line-height: 1.6;
         max-width: 820px;
         margin-bottom: 20px;
@@ -252,7 +254,7 @@ st.markdown(f"""
         border-radius: 6px;
         font-family: 'Montserrat', sans-serif;
         font-weight: 800;
-        font-size: 0.94rem;
+        font-size: clamp(0.8rem, 2.2vw, 0.94rem);
         letter-spacing: 1px;
         text-transform: uppercase;
         text-decoration: none;
@@ -391,7 +393,7 @@ st.markdown(f"""
         font-weight: 800 !important;
     }}
 
-    /* CARDS DE CONTEÚDO */
+    /* ================= CARDS DE CONTEÚDO (FONTE ESCURA E NÍTIDA) ================= */
     .card-pro-content {{
         background-color: rgba(255, 255, 255, 0.95) !important;
         border: 1px solid #CBD5E1 !important;
@@ -402,16 +404,17 @@ st.markdown(f"""
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }}
     .card-pro-content h4 {{
+        font-family: 'Montserrat', sans-serif !important;
         color: #0F172A !important;
-        font-size: 1.15rem;
-        font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 8px;
+        font-size: 1.15rem !important;
+        font-weight: 800 !important;
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
     }}
     .card-pro-content p, .card-pro-content li {{
         color: #1E293B !important;
-        font-size: 0.94rem;
-        line-height: 1.6;
+        font-size: 0.94rem !important;
+        line-height: 1.6 !important;
     }}
     .card-pro-content ul {{
         margin: 6px 0;
@@ -1262,7 +1265,7 @@ with tab_tools:
                     </div>
                 </div>
                 <p class="card-tool-desc">
-                    Modelagem 3D avançada de máquinas e mecanismos, montagens industriais com validação de interferências e geração de detalhamento com tolerâncias geométricas e de montagem.
+                    Modelagem 3D avançada de máquinas e mechanisms, montagens industriais com validação de interferências e geração de detalhamento com tolerâncias geométricas e de montagem.
                 </p>
             </div>
             <div><span class="badge-tool-tag">Mecanismos 3D</span><span class="badge-tool-tag">Manufatura</span><span class="badge-tool-tag">Tolerâncias</span></div>
