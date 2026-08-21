@@ -1819,7 +1819,7 @@ with tab_contato:
                     with st.spinner("Enviando mensagem para caioflavio.cf@gmail.com..."):
                         try:
                             # Endpoint ativo do FormSubmit (bujipo)
-                            url_endpoint = "https://formsubmit.co/el/bujipo"
+                            url_endpoint = "https://formsubmit.co/ajax/bujipo"
                             
                             payload = {
                                 "Nome/Empresa": nome_contato,
@@ -1831,16 +1831,25 @@ with tab_contato:
                                 "_captcha": "false"
                             }
                             
+                            # Adicionar Header para o FormSubmit aceitar a requisição do Python
+                            headers = {
+                                "Accept": "application/json"
+                            }
+                            
                             files = {}
                             if anexo_arquivo is not None:
                                 files = {"attachment": (anexo_arquivo.name, anexo_arquivo.getvalue())}
                             
-                            resposta = requests.post(url_endpoint, data=payload, files=files if files else None, timeout=25)
+                            resposta = requests.post(url_endpoint, data=payload, headers=headers, files=files if files else None, timeout=25)
                             
                             if resposta.status_code == 200:
-                                st.success("✅ Mensagem enviada com sucesso para **caioflavio.cf@gmail.com**!")
+                                res_json = resposta.json()
+                                if res_json.get("success") == "true":
+                                    st.success("✅ Mensagem enviada com sucesso para **caioflavio.cf@gmail.com**!")
+                                else:
+                                    st.warning("⚠️ Mensagem retida pelo provedor. Verifique se você ativou o FormSubmit no seu e-mail.")
                             else:
-                                st.warning("⚠️ Não foi possível confirmar o envio pelo formulário. Por favor, utilize o botão de WhatsApp ao lado para contato direto.")
+                                st.warning(f"⚠️ Erro de servidor ({resposta.status_code}). Utilize o botão de WhatsApp.")
                         except Exception:
                             st.warning("⚠️ Ocorreu uma oscilação de rede. Por favor, envie diretamente pelo botão do WhatsApp.")
 
