@@ -67,7 +67,7 @@ vray_b64 = carregar_arquivo_base64(["VRAY.png", "vray.png", "V-RAY.png", "v-ray.
 pdf_acervo_b64 = carregar_arquivo_base64(["registradas_2.pdf", "registradas.pdf", "acervo_tecnico.pdf"], "application/pdf")
 
 # -----------------------------------------------------------------------------
-# 3. CSS EXECUTIVO E FORMULÁRIOS
+# 3. CSS EXECUTIVO
 # -----------------------------------------------------------------------------
 st.markdown(f"""
     <style>
@@ -87,61 +87,6 @@ st.markdown(f"""
     }}
     p, span, label, li {{
         color: #E2E8F0 !important;
-    }}
-
-    /* OVERRIDE PARA CAMPOS DE FORMULÁRIO (INPUTS, TEXTAREA, SELECT, UPLOAD) */
-    .stTextInput input, 
-    .stTextArea textarea, 
-    div[data-baseweb="select"] > div,
-    div[data-baseweb="base-input"] {{
-        background-color: #F8FAFC !important;
-        color: #0F172A !important;
-        -webkit-text-fill-color: #0F172A !important;
-        font-weight: 600 !important;
-        border: 1px solid #CBD5E1 !important;
-        border-radius: 6px !important;
-    }}
-    .stTextInput input:focus, .stTextArea textarea:focus {{
-        border-color: #F37021 !important;
-        box-shadow: 0 0 0 1px #F37021 !important;
-    }}
-    .stSelectbox div[data-baseweb="select"] span {{
-        color: #0F172A !important;
-        font-weight: 600 !important;
-    }}
-    .stSelectbox div[data-baseweb="select"] svg {{
-        fill: #EA580C !important;
-    }}
-    /* Fundo da lista dropdown */
-    div[data-baseweb="popover"], div[data-baseweb="menu"], ul[role="listbox"] {{
-        background-color: #FFFFFF !important;
-        border: 1px solid #CBD5E1 !important;
-        border-radius: 8px !important;
-    }}
-    li[role="option"] {{
-        background-color: #FFFFFF !important;
-        color: #0F172A !important;
-        font-weight: 600 !important;
-    }}
-    li[role="option"]:hover, li[role="option"][aria-selected="true"] {{
-        background-color: #FFF7ED !important;
-        color: #EA580C !important;
-    }}
-    /* Labels dos campos de formulário */
-    .stTextInput label, .stTextArea label, .stSelectbox label, .stFileUploader label {{
-        color: #F8FAFC !important;
-        font-weight: 700 !important;
-        font-size: 0.95rem !important;
-    }}
-    /* Caixa de upload de arquivos */
-    .stFileUploader div[data-testid="stFileUploaderDropzone"] {{
-        background-color: #F8FAFC !important;
-        border: 1px dashed #CBD5E1 !important;
-    }}
-    .stFileUploader div[data-testid="stFileUploaderDropzone"] div, 
-    .stFileUploader div[data-testid="stFileUploaderDropzone"] span {{
-        color: #0F172A !important;
-        font-weight: 600 !important;
     }}
 
     /* CARD DE HABILITAÇÃO DOS CONSELHOS */
@@ -169,6 +114,47 @@ st.markdown(f"""
         font-weight: 800 !important;
         font-size: 0.75rem !important;
         display: block;
+    }}
+
+    /* SELECTBOX & DROPDOWN */
+    div[data-baseweb="select"] > div {{
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
+        border: 1px solid #CBD5E1 !important;
+        border-radius: 6px !important;
+    }}
+    div[data-baseweb="select"] span {{
+        color: #0F172A !important;
+        font-weight: 600 !important;
+    }}
+    div[data-baseweb="select"] svg {{
+        fill: #EA580C !important;
+    }}
+    div[data-baseweb="popover"], div[data-baseweb="menu"], ul[role="listbox"] {{
+        background-color: #FFFFFF !important;
+        border: 1px solid #CBD5E1 !important;
+        border-radius: 8px !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+    }}
+    li[role="option"] {{
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
+        font-weight: 600 !important;
+        font-size: 0.90rem !important;
+        padding: 10px 14px !important;
+    }}
+    li[role="option"]:hover, li[role="option"][aria-selected="true"] {{
+        background-color: #FFF7ED !important;
+        color: #EA580C !important;
+    }}
+    div[data-baseweb="input"] > div, div[data-baseweb="textarea"] > div {{
+        background-color: #FFFFFF !important;
+        border: 1px solid #CBD5E1 !important;
+        border-radius: 6px !important;
+    }}
+    div[data-baseweb="input"] input, div[data-baseweb="textarea"] textarea {{
+        color: #0F172A !important;
+        font-weight: 600 !important;
     }}
 
     /* TOP UTILITY BAR */
@@ -281,6 +267,24 @@ st.markdown(f"""
     .hero-btn-action:hover {{
         background-color: #D95D0F !important;
         transform: translateY(-2px);
+    }}
+
+    /* Z-INDEX & OVERFLOW */
+    [data-testid="stHorizontalBlock"] {{
+        overflow: visible !important;
+        position: relative !important;
+        z-index: 50 !important;
+    }}
+    div[data-testid="column"] {{
+        overflow: visible !important;
+        position: relative !important;
+    }}
+    .element-container {{
+        overflow: visible !important;
+    }}
+    div[data-testid="stTabs"] {{
+        position: relative !important;
+        z-index: 1 !important;
     }}
 
     /* KPI CARDS */
@@ -1076,7 +1080,7 @@ with tab_tools:
                     </div>
                 </div>
                 <p class="card-tool-desc">
-                    Dimensionamento e detalhamento de structures metálicas pesadas (Pipe Racks, comportas estanques e suportes industriais). Análise de esforços estáticos/dinâmicos, torção e flambagem sob normas ABNT (NBR 8800).
+                    Dimensionamento e detalhamento de estruturas metálicas pesadas (Pipe Racks, comportas estanques e suportes industriais). Análise de esforços estáticos/dinâmicos, torção e flambagem sob normas ABNT (NBR 8800).
                 </p>
             </div>
             <div><span class="badge-tool-tag">Pipe Racks</span><span class="badge-tool-tag">Estruturas Metálicas</span><span class="badge-tool-tag">Análise Estática</span></div>
@@ -1814,8 +1818,8 @@ with tab_contato:
                 else:
                     with st.spinner("Enviando mensagem para caioflavio.cf@gmail.com..."):
                         try:
-                            # Conexão direta com o e-mail via endpoint oficial FormSubmit
-                            url_endpoint = "https://formsubmit.co/ajax/bujipo"
+                            # Conexão AJAX direta usando o e-mail ativado
+                            url_endpoint = "https://formsubmit.co/ajax/caioflavio.cf@gmail.com"
                             
                             payload = {
                                 "Nome/Empresa": nome_contato,
@@ -1827,10 +1831,8 @@ with tab_contato:
                                 "_captcha": "false"
                             }
                             
-                            # Header que o FormSubmit necessita para aceitar conexões Python
                             headers = {
-                                "Accept": "application/json",
-                                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+                                "Accept": "application/json"
                             }
                             
                             files = {}
@@ -1841,14 +1843,15 @@ with tab_contato:
                             
                             if resposta.status_code == 200:
                                 res_json = resposta.json()
-                                if res_json.get("success") == "true":
+                                # Correção para ler perfeitamente o booleano de retorno
+                                if res_json.get("success") == True or str(res_json.get("success")).lower() == "true":
                                     st.success("✅ Mensagem enviada com sucesso para **caioflavio.cf@gmail.com**!")
                                 else:
-                                    st.warning("⚠️ Mensagem não processada. O serviço exige verificação do e-mail.")
+                                    st.warning("⚠️ Mensagem não processada. Verifique se concluiu a ativação do e-mail.")
                             else:
-                                st.warning(f"⚠️ Servidor ocupado. Tente o botão do WhatsApp. (Status: {resposta.status_code})")
+                                st.warning(f"⚠️ Resposta do Servidor: {resposta.status_code}. Utilize o botão do WhatsApp ao lado.")
                         except Exception as e:
-                            st.error(f"⚠️ Erro de servidor de formulário. Por favor, acesse via WhatsApp. Detalhe técnico: {str(e)}")
+                            st.error(f"⚠️ Falha técnica ({str(e)}). Por favor, inicie a conversa pelo WhatsApp.")
 
 # -----------------------------------------------------------------------------
 # 11. FOOTER CORPORATIVO
