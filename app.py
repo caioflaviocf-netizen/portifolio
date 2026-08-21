@@ -81,7 +81,7 @@ st.markdown(f"""
 
     h1, h2, h3, h4, h5, h6 {{
         font-family: 'Montserrat', sans-serif !important;
-        color: #0f2133 !important;
+        color: #0F172A !important;
         font-weight: 700;
     }}
     p, span, label, li {{
