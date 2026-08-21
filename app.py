@@ -1818,8 +1818,8 @@ with tab_contato:
                 else:
                     with st.spinner("Enviando mensagem para caioflavio.cf@gmail.com..."):
                         try:
-                            # Endpoint gratuito do FormSubmit para envio direto ao seu e-mail
-                            url_endpoint = "https://formsubmit.co/el/bujipo"
+                            # Endpoint ativo do FormSubmit (bujipo)
+                            url_endpoint = "https://formsubmit.co/ajax/bujipo"
                             
                             payload = {
                                 "Nome/Empresa": nome_contato,
@@ -1827,7 +1827,8 @@ with tab_contato:
                                 "Email_Retorno": email_contato,
                                 "_subject": f"[Portfólio Engenharia] {assunto_contato} - {nome_contato}",
                                 "Mensagem": mensagem_contato,
-                                "_template": "table"
+                                "_template": "table",
+                                "_captcha": "false"
                             }
                             
                             files = {}
@@ -1837,12 +1838,11 @@ with tab_contato:
                             resposta = requests.post(url_endpoint, data=payload, files=files if files else None, timeout=25)
                             
                             if resposta.status_code == 200:
-                                st.success("✅ Mensagem e anexo enviados com sucesso para **caioflavio.cf@gmail.com**!")
-                                st.info("ℹ️ **Nota de Primeiro Envio:** Na primeira vez em que receber uma mensagem pelo FormSubmit, clique no botão de ativação enviado pelo serviço ao seu Gmail para autorizar os próximos envios automaticamente.")
+                                st.success("✅ Mensagem enviada com sucesso para **caioflavio.cf@gmail.com**!")
                             else:
-                                st.warning("⚠️ Não foi possível conectar ao servidor de e-mail no momento. Por favor, utilize o botão de WhatsApp ao lado para contato imediato.")
-                        except Exception as e:
-                            st.warning("⚠️ Ocorreu uma oscilação na rede de envio. Por favor, envie diretamente pelo WhatsApp ao lado.")
+                                st.warning("⚠️ Não foi possível confirmar o envio pelo formulário. Por favor, utilize o botão de WhatsApp ao lado para contato direto.")
+                        except Exception:
+                            st.warning("⚠️ Ocorreu uma oscilação de rede. Por favor, envie diretamente pelo botão do WhatsApp.")
 
 # -----------------------------------------------------------------------------
 # 11. FOOTER CORPORATIVO
