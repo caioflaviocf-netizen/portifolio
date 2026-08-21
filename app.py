@@ -397,7 +397,7 @@ st.markdown(f"""
     /* ================= CARDS DE CONTEÚDO (FONTE ESCURA FIXA) ================= */
     .card-pro-content {{
         background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         border-left: 5px solid #F37021 !important;
         border-radius: 8px;
         padding: 22px;
