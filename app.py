@@ -66,12 +66,13 @@ vray_b64 = carregar_arquivo_base64(["VRAY.png", "vray.png", "V-RAY.png", "v-ray.
 pdf_acervo_b64 = carregar_arquivo_base64(["registradas_2.pdf", "registradas.pdf", "acervo_tecnico.pdf"], "application/pdf")
 
 # -----------------------------------------------------------------------------
-# 3. CSS EXECUTIVO COM CORREÇÃO DE CONTRASTE
+# 3. CSS EXECUTIVO
 # -----------------------------------------------------------------------------
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
+    /* BACKGROUND TEMÁTICO DE CONSTRUÇÃO */
     .stApp {{
         background: linear-gradient(rgba(11, 15, 25, 0.88), rgba(15, 23, 42, 0.92)), 
                     url('{bg_image_css}') center/cover fixed no-repeat !important;
@@ -393,7 +394,7 @@ st.markdown(f"""
         font-weight: 800 !important;
     }}
 
-    /* ================= CARDS DE CONTEÚDO (FONTE ESCURA E NÍTIDA) ================= */
+    /* ================= CARDS DE CONTEÚDO (FONTE ESCURA FIXA) ================= */
     .card-pro-content {{
         background-color: rgba(255, 255, 255, 0.95) !important;
         border: 1px solid #CBD5E1 !important;
@@ -403,6 +404,7 @@ st.markdown(f"""
         margin-bottom: 18px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }}
+    div[data-testid="stMarkdownContainer"] .card-pro-content h4,
     .card-pro-content h4 {{
         font-family: 'Montserrat', sans-serif !important;
         color: #0F172A !important;
@@ -411,7 +413,10 @@ st.markdown(f"""
         margin-top: 0 !important;
         margin-bottom: 8px !important;
     }}
-    .card-pro-content p, .card-pro-content li {{
+    div[data-testid="stMarkdownContainer"] .card-pro-content p,
+    div[data-testid="stMarkdownContainer"] .card-pro-content li,
+    .card-pro-content p, 
+    .card-pro-content li {{
         color: #1E293B !important;
         font-size: 0.94rem !important;
         line-height: 1.6 !important;
@@ -774,7 +779,7 @@ with tab_resumo:
     st.markdown("### 📌 Resumo Profissional")
     st.markdown("""
     <div class="card-pro-content" style="border-left: 6px solid #F37021;">
-        <p style="font-size: 1.05rem; line-height: 1.7; color: #0F172A; font-weight: 500;">
+        <p style="font-size: 1.05rem; line-height: 1.7; color: #0F172A !important; font-weight: 500;">
             Sou <b>Engenheiro de Produção e Mecânico (CREA/CFT)</b> com <b>10 anos de experiência</b> como Responsável Técnico e Projetista. 
             Lidero projetos multidisciplinares integrando PMO/PCP ao campo para otimizar Capex/Opex. 
             Diferencio-me pelo uso de <b>Engenharia de Dados e BIM 5D</b> na gestão de ativos, reduzindo lead time e garantindo alta disponibilidade. 
@@ -789,7 +794,7 @@ with tab_resumo:
     with comp1:
         st.markdown("""
         <div class="card-pro-content">
-            <h4>📅 Planejamento e Gestão</h4>
+            <h4 style="color: #0F172A !important;">📅 Planejamento e Gestão</h4>
             <p>Estruturação de governança em PMO e controle físico-financeiro de Capex/Opex através de EAP e Caminho Crítico (CPM). Elaboração de histogramas de recursos, curvas S de avanço e matrizes probabilísticas de risco com Primavera P6 e MS Project. Foco em previsibilidade contratual, otimização de lead time e alinhamento estratégico entre planejamento executivo e rotinas de campo.</p>
             <span class="badge-tool-tag">Primavera P6</span><span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">PMO / PCP</span><span class="badge-tool-tag">Gestão de Riscos</span>
         </div>
@@ -797,7 +802,7 @@ with tab_resumo:
         
         st.markdown("""
         <div class="card-pro-content">
-            <h4>📊 Processos e Dados</h4>
+            <h4 style="color: #0F172A !important;">📊 Processos e Dados</h4>
             <p>Engenharia de dados aplicada à otimização operacional e automação de rotinas industriais. Desenvolvimento de pipelines de dados em Python e bancos SQLite para rastreabilidade de ativos e auditorias técnicas. Aplicação de Lean Six Sigma (DMAIC, VSM e Kaizen) com modelagem de dashboards em Power BI para monitoramento de KPIs estratégicos, eliminação de gargalos e tomada de decisão ágil.</p>
             <span class="badge-tool-tag">Python</span><span class="badge-tool-tag">SQL / SQLite</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">Lean Six Sigma</span>
         </div>
@@ -805,7 +810,7 @@ with tab_resumo:
         
         st.markdown("""
         <div class="card-pro-content">
-            <h4>🏛️ Infraestrutura e Normas</h4>
+            <h4 style="color: #0F172A !important;">🏛️ Infraestrutura e Normas</h4>
             <p>Concepção e homologação de infraestruturas elétricas e de telecomunicações de alta disponibilidade. Certificação internacional Furukawa FCP Master para redes ópticas e Data Centers. Aprovação de mais de 20 projetos de subestações e baixa tensão junto à CPFL (GED-13), coordenação integral de processos de PPCI/AVCB e emissão de laudos de engenharia legal com respaldo via CREA e CFT.</p>
             <span class="badge-tool-tag">Telecom (FCP Master)</span><span class="badge-tool-tag">AVCB</span><span class="badge-tool-tag">CPFL / GED-13</span><span class="badge-tool-tag">NRs / ABNT</span>
         </div>
@@ -814,7 +819,7 @@ with tab_resumo:
     with comp2:
         st.markdown("""
         <div class="card-pro-content">
-            <h4>📐 Projetos e Modelagem</h4>
+            <h4 style="color: #0F172A !important;">📐 Projetos e Modelagem</h4>
             <p>Engenharia de detalhamento e modelagem paramétrica em ambiente BIM 5D, integrando geometria 3D, cronograma e orçamentação (B.O.Q.). Compatibilização multidisciplinar com detecção de interferências (Clash Detection) em Navisworks e Revit. Cálculo e detalhamento de estruturas metálicas (Pipe Racks), tubulações em Plant 3D e ativos mecânicos em SolidWorks com total conformidade ABNT.</p>
             <span class="badge-tool-tag">Revit (BIM 5D)</span><span class="badge-tool-tag">SolidWorks</span><span class="badge-tool-tag">Plant 3D</span><span class="badge-tool-tag">AutoCAD Avançado</span>
         </div>
@@ -822,7 +827,7 @@ with tab_resumo:
         
         st.markdown("""
         <div class="card-pro-content">
-            <h4>🔧 Manutenção e Ativos</h4>
+            <h4 style="color: #0F172A !important;">🔧 Manutenção e Ativos</h4>
             <p>Gestão da confiabilidade e integridade operacional de ativos de missão crítica sob metodologia RCM e TPM. Elaboração e auditoria de PMOC hospitalar/industrial (Anvisa e NBR 7256) em sistemas de climatização e utilidades. Monitoramento de KPIs de performance (OEE, MTBF e MTTR), implementação de rotinas preditivas (termografia e vibração) e parametrização de ordens via IBM Maximo.</p>
             <span class="badge-tool-tag">IBM Maximo</span><span class="badge-tool-tag">TPM</span><span class="badge-tool-tag">OEE / Confiabilidade</span><span class="badge-tool-tag">PMOC / RCM</span>
         </div>
@@ -835,10 +840,10 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021;">L. Parice</h4>
+            <h4 style="margin:0; color:#F37021 !important;">L. Parice</h4>
             <span class="badge-cft-tag">05/2026 - Atual</span>
         </div>
-        <p style="font-weight:700; color:#0F172A; margin-bottom:8px;">Engenheiro de Planejamento e Processos</p>
+        <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Engenheiro de Planejamento e Processos</p>
         <p>Atuação focada na gestão de ativos de missão crítica e utilidades hospitalares. Classificação de criticidade e aplicação de RCM (Manutenção Centrada na Confiabilidade) para sistemas de climatização (chillers e fancoils) prioritários em UTIs e centros cirúrgicos.</p>
         <ul>
             <li>Gestão integral do <b>PMOC</b> (Plano de Manutenção, Operação e Controle), garantindo qualidade do ar e integridade de filtros HEPA sob diretrizes Anvisa e NBR 7256.</li>
@@ -853,10 +858,10 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021;">Autônomo</h4>
+            <h4 style="margin:0; color:#F37021 !important;">Autônomo</h4>
             <span class="badge-cft-tag">01/2025 - Atual</span>
         </div>
-        <p style="font-weight:700; color:#0F172A; margin-bottom:8px;">Engenheiro Consultor de Projetos e Instalações</p>
+        <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Engenheiro Consultor de Projetos e Instalações</p>
         <p>Consultoria multidisciplinar e viabilização de Capex/Opex com emissão de ARTs e TRTs.</p>
         <ul>
             <li>Cálculo estrutural, hidráulico, elétrico e mecânico, com detalhamento em <b>BIM 5D (Revit/SolidWorks)</b>.</li>
@@ -870,10 +875,10 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021;">Tracevia S/A</h4>
+            <h4 style="margin:0; color:#F37021 !important;">Tracevia S/A</h4>
             <span class="badge-cft-tag">08/2025 - 11/2025</span>
         </div>
-        <p style="font-weight:700; color:#0F172A; margin-bottom:8px;">Engenheiro de Planejamento</p>
+        <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Engenheiro de Planejamento</p>
         <p>Gestão estratégica de projetos de infraestrutura tecnológica (ITS) e controle físico-financeiro sob práticas PMBOK.</p>
         <ul>
             <li>Desenvolvimento em <b>Python e SQLite</b> para rastreabilidade de ativos e logística em tempo real.</li>
@@ -887,10 +892,10 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021;">Grupo Garcia</h4>
+            <h4 style="margin:0; color:#F37021 !important;">Grupo Garcia</h4>
             <span class="badge-cft-tag">03/2018 - 01/2025</span>
         </div>
-        <p style="font-weight:700; color:#0F172A; margin-bottom:8px;">Supervisor de Projetos</p>
+        <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Supervisor de Projetos</p>
         <p>Estruturação do departamento técnico e liderança de equipes multidisciplinares.</p>
         <ul>
             <li>Padronização em blocos dinâmicos CAD com <b>redução de 25% no tempo de elaboração</b> de projetos.</li>
@@ -1265,7 +1270,7 @@ with tab_tools:
                     </div>
                 </div>
                 <p class="card-tool-desc">
-                    Modelagem 3D avançada de máquinas e mechanisms, montagens industriais com validação de interferências e geração de detalhamento com tolerâncias geométricas e de montagem.
+                    Modelagem 3D avançada de máquinas e mecanismos, montagens industriais com validação de interferências e geração de detalhamento com tolerâncias geométricas e de montagem.
                 </p>
             </div>
             <div><span class="badge-tool-tag">Mecanismos 3D</span><span class="badge-tool-tag">Manufatura</span><span class="badge-tool-tag">Tolerâncias</span></div>
@@ -1568,7 +1573,7 @@ with tab_acervo:
             st.markdown(f"""
             <div class="card-pro-content" style="margin-bottom: 12px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                    <h4 style="margin:0; color:#0F172A;">{row['titulo']}</h4>
+                    <h4 style="margin:0; color:#0F172A !important;">{row['titulo']}</h4>
                     <span class="badge-cft-tag">{row['conselho']} • {row['id_doc']}</span>
                 </div>
                 <p style="margin:2px 0 6px 0; color:#475569; font-size:0.88rem;">
@@ -1590,7 +1595,7 @@ with tab_formacao:
     with f_col1:
         st.markdown("""
         <div class="card-pro-content">
-            <h4>🎓 Ensino Superior & Pós-Graduações</h4>
+            <h4 style="color: #0F172A !important;">🎓 Ensino Superior & Pós-Graduações</h4>
             <ul>
                 <li><b>Pós-graduação em Engenharia de Controle e Automação</b> – Faculdade Anhanguera (Concluído 01/2026)</li>
                 <li><b>Pós-graduação em Engenharia de Estruturas Metálicas</b> – Faculdade Anhanguera (Concluído 01/2026)</li>
@@ -1606,7 +1611,7 @@ with tab_formacao:
     with f_col2:
         st.markdown("""
         <div class="card-pro-content">
-            <h4>⚙️ Formações Técnicas (ETEC)</h4>
+            <h4 style="color: #0F172A !important;">⚙️ Formações Técnicas (ETEC)</h4>
             <ul>
                 <li><b>Técnico em Mecânica (2021)</b> – ETEC Aristóteles Ferreira</li>
                 <li><b>Especialização Técnica em Gestão de Projetos (2020)</b> – ETEC Praia Grande</li>
@@ -1621,7 +1626,7 @@ with tab_formacao:
         
     st.markdown("""
     <div class="card-pro-content">
-        <h4>🌐 Certificações Internacionais & Habilitações</h4>
+        <h4 style="color: #0F172A !important;">🌐 Certificações Internacionais & Habilitações</h4>
         <ul>
             <li><b>Certificações:</b> Autodesk Certified User (ACU), Furukawa FCP Professional e Furukawa FCP Master.</li>
             <li><b>Idiomas:</b> Inglês (técnico para leitura), Espanhol (básico).</li>
