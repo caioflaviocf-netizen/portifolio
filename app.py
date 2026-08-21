@@ -3,7 +3,6 @@ import pandas as pd
 import plotly.express as px
 import base64
 import os
-import re
 import requests
 
 # -----------------------------------------------------------------------------
@@ -67,7 +66,7 @@ vray_b64 = carregar_arquivo_base64(["VRAY.png", "vray.png", "V-RAY.png", "v-ray.
 pdf_acervo_b64 = carregar_arquivo_base64(["registradas_2.pdf", "registradas.pdf", "acervo_tecnico.pdf"], "application/pdf")
 
 # -----------------------------------------------------------------------------
-# 3. CSS EXECUTIVO
+# 3. CSS EXECUTIVO E FORMULÁRIOS
 # -----------------------------------------------------------------------------
 st.markdown(f"""
     <style>
@@ -87,6 +86,51 @@ st.markdown(f"""
     }}
     p, span, label, li {{
         color: #E2E8F0 !important;
+    }}
+
+    /* OVERRIDE PARA CAMPOS DE FORMULÁRIO (INPUTS, TEXTAREA, SELECT) */
+    .stTextInput input, 
+    .stTextArea textarea, 
+    div[data-baseweb="select"] > div,
+    div[data-baseweb="base-input"] {{
+        background-color: #F8FAFC !important;
+        color: #0F172A !important;
+        -webkit-text-fill-color: #0F172A !important;
+        font-weight: 600 !important;
+        border: 1px solid #CBD5E1 !important;
+        border-radius: 6px !important;
+    }}
+    .stTextInput input:focus, .stTextArea textarea:focus {{
+        border-color: #F37021 !important;
+        box-shadow: 0 0 0 1px #F37021 !important;
+    }}
+    .stSelectbox div[data-baseweb="select"] span {{
+        color: #0F172A !important;
+        font-weight: 600 !important;
+    }}
+    .stSelectbox div[data-baseweb="select"] svg {{
+        fill: #EA580C !important;
+    }}
+    /* Fundo da lista dropdown */
+    div[data-baseweb="popover"], div[data-baseweb="menu"], ul[role="listbox"] {{
+        background-color: #FFFFFF !important;
+        border: 1px solid #CBD5E1 !important;
+        border-radius: 8px !important;
+    }}
+    li[role="option"] {{
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
+        font-weight: 600 !important;
+    }}
+    li[role="option"]:hover, li[role="option"][aria-selected="true"] {{
+        background-color: #FFF7ED !important;
+        color: #EA580C !important;
+    }}
+    /* Labels dos campos de formulário */
+    .stTextInput label, .stTextArea label, .stSelectbox label {{
+        color: #F8FAFC !important;
+        font-weight: 700 !important;
+        font-size: 0.95rem !important;
     }}
 
     /* CARD DE HABILITAÇÃO DOS CONSELHOS */
@@ -114,47 +158,6 @@ st.markdown(f"""
         font-weight: 800 !important;
         font-size: 0.75rem !important;
         display: block;
-    }}
-
-    /* SELECTBOX & DROPDOWN */
-    div[data-baseweb="select"] > div {{
-        background-color: #FFFFFF !important;
-        color: #0F172A !important;
-        border: 1px solid #CBD5E1 !important;
-        border-radius: 6px !important;
-    }}
-    div[data-baseweb="select"] span {{
-        color: #0F172A !important;
-        font-weight: 600 !important;
-    }}
-    div[data-baseweb="select"] svg {{
-        fill: #EA580C !important;
-    }}
-    div[data-baseweb="popover"], div[data-baseweb="menu"], ul[role="listbox"] {{
-        background-color: #FFFFFF !important;
-        border: 1px solid #CBD5E1 !important;
-        border-radius: 8px !important;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
-    }}
-    li[role="option"] {{
-        background-color: #FFFFFF !important;
-        color: #0F172A !important;
-        font-weight: 600 !important;
-        font-size: 0.90rem !important;
-        padding: 10px 14px !important;
-    }}
-    li[role="option"]:hover, li[role="option"][aria-selected="true"] {{
-        background-color: #FFF7ED !important;
-        color: #EA580C !important;
-    }}
-    div[data-baseweb="input"] > div, div[data-baseweb="textarea"] > div {{
-        background-color: #FFFFFF !important;
-        border: 1px solid #CBD5E1 !important;
-        border-radius: 6px !important;
-    }}
-    div[data-baseweb="input"] input, div[data-baseweb="textarea"] textarea {{
-        color: #0F172A !important;
-        font-weight: 600 !important;
     }}
 
     /* TOP UTILITY BAR */
@@ -1775,7 +1778,7 @@ with tab_contato:
         st.markdown("""
         <div class="card-pro-content">
             <span class="card-project-title">✉️ Enviar Mensagem Direta por E-mail</span>
-            <p>Preencha os dados abaixo com as especificações do projeto, memorial descritivo ou solicitação de proposta técnica.</p>
+            <p>Preencha os dados abaixo com as especificações do projeto ou solicitação de proposta técnica.</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -1805,11 +1808,6 @@ with tab_contato:
                 height=160
             )
             
-            anexo_arquivo = st.file_uploader(
-                "Anexar Arquivo Técnico (Opcional - PDF, DWG, DOCX, ZIP ou Imagens):",
-                type=["pdf", "dwg", "docx", "zip", "png", "jpg", "jpeg"]
-            )
-            
             btn_enviar = st.form_submit_button("📤 Enviar Mensagem", use_container_width=True)
             
             if btn_enviar:
@@ -1818,7 +1816,7 @@ with tab_contato:
                 else:
                     with st.spinner("Enviando mensagem para caioflavio.cf@gmail.com..."):
                         try:
-                            # Conexão AJAX direta usando o e-mail ativado
+                            # Endpoint oficial e estrito para envio sem anexo
                             url_endpoint = "https://formsubmit.co/ajax/caioflavio.cf@gmail.com"
                             
                             payload = {
@@ -1827,31 +1825,30 @@ with tab_contato:
                                 "Email_Retorno": email_contato,
                                 "_subject": f"[Portfólio Engenharia] {assunto_contato} - {nome_contato}",
                                 "Mensagem": mensagem_contato,
-                                "_template": "table",
-                                "_captcha": "false"
+                                "_template": "table"
                             }
                             
+                            # Formata como JSON estrito (sem multipart/form-data)
                             headers = {
-                                "Accept": "application/json"
+                                "Accept": "application/json",
+                                "Content-Type": "application/json"
                             }
                             
-                            files = {}
-                            if anexo_arquivo is not None:
-                                files = {"attachment": (anexo_arquivo.name, anexo_arquivo.getvalue(), anexo_arquivo.type)}
-                            
-                            resposta = requests.post(url_endpoint, data=payload, headers=headers, files=files if files else None, timeout=25)
+                            # O uso de json=payload elimina o problema de recusa do servidor
+                            resposta = requests.post(url_endpoint, json=payload, headers=headers, timeout=15)
                             
                             if resposta.status_code == 200:
                                 res_json = resposta.json()
-                                # Correção para ler perfeitamente o booleano de retorno
+                                
+                                # Correção: Lendo o Booleano real 'True' retornado pela API do FormSubmit
                                 if res_json.get("success") == True or str(res_json.get("success")).lower() == "true":
                                     st.success("✅ Mensagem enviada com sucesso para **caioflavio.cf@gmail.com**!")
                                 else:
-                                    st.warning("⚠️ Mensagem não processada. Verifique se concluiu a ativação do e-mail.")
+                                    st.warning(f"⚠️ A mensagem foi enviada ao servidor, mas o status foi: {res_json.get('message', 'Desconhecido')}. Verifique o e-mail de ativação.")
                             else:
                                 st.warning(f"⚠️ Resposta do Servidor: {resposta.status_code}. Utilize o botão do WhatsApp ao lado.")
                         except Exception as e:
-                            st.error(f"⚠️ Falha técnica ({str(e)}). Por favor, inicie a conversa pelo WhatsApp.")
+                            st.error(f"⚠️ Falha de conexão: {str(e)}. Por favor, inicie a conversa pelo WhatsApp.")
 
 # -----------------------------------------------------------------------------
 # 11. FOOTER CORPORATIVO
