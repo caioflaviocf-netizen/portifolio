@@ -79,7 +79,7 @@ st.markdown(f"""
         font-family: 'Inter', sans-serif !important;
     }}
 
-    h1, h2, h3, h5, h6 {{
+    .stApp h1, .stApp h2, .stApp h3, .stApp h5, .stApp h6 {{
         font-family: 'Montserrat', sans-serif !important;
         color: #F8FAFC !important;
         font-weight: 700;
@@ -97,7 +97,7 @@ st.markdown(f"""
         background-color: #FFFFFF !important;
         padding: 8px 18px;
         border-radius: 8px;
-        border: 1px solid #1E293B;
+        border: 1px solid #CBD5E1;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }}
     .council-text-title {{
@@ -119,7 +119,7 @@ st.markdown(f"""
     div[data-baseweb="select"] > div {{
         background-color: #FFFFFF !important;
         color: #0F172A !important;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         border-radius: 6px !important;
     }}
     div[data-baseweb="select"] span {{
@@ -131,7 +131,7 @@ st.markdown(f"""
     }}
     div[data-baseweb="popover"], div[data-baseweb="menu"], ul[role="listbox"] {{
         background-color: #FFFFFF !important;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         border-radius: 8px !important;
         box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
     }}
@@ -148,7 +148,7 @@ st.markdown(f"""
     }}
     div[data-baseweb="input"] > div {{
         background-color: #FFFFFF !important;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         border-radius: 6px !important;
     }}
     div[data-baseweb="input"] input {{
@@ -290,7 +290,7 @@ st.markdown(f"""
     .kpi-hover-card {{
         position: relative;
         background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         border-top: 4px solid #F37021 !important;
         border-radius: 8px;
         padding: 18px 12px 14px 12px;
@@ -375,7 +375,7 @@ st.markdown(f"""
         background-color: rgba(255, 255, 255, 0.90) !important;
         padding: 12px 18px !important;
         border-radius: 6px 6px 0 0 !important;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         border-bottom: none !important;
         margin-right: 4px !important;
     }}
@@ -397,24 +397,23 @@ st.markdown(f"""
     /* ================= CARDS DE CONTEÚDO (FONTE ESCURA FIXA) ================= */
     .card-pro-content {{
         background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         border-left: 5px solid #F37021 !important;
         border-radius: 8px;
         padding: 22px;
         margin-bottom: 18px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }}
-    div[data-testid="stMarkdownContainer"] .card-pro-content h4,
-    .card-pro-content h4 {{
+    .card-project-title {{
         font-family: 'Montserrat', sans-serif !important;
         color: #0F172A !important;
         font-size: 1.15rem !important;
         font-weight: 800 !important;
+        line-height: 1.3 !important;
         margin-top: 0 !important;
         margin-bottom: 8px !important;
+        display: block !important;
     }}
-    div[data-testid="stMarkdownContainer"] .card-pro-content p,
-    div[data-testid="stMarkdownContainer"] .card-pro-content li,
     .card-pro-content p, 
     .card-pro-content li {{
         color: #1E293B !important;
@@ -429,7 +428,7 @@ st.markdown(f"""
     /* CARDS DE SOFTWARE / FERRAMENTAS */
     .card-tool-box {{
         background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         border-top: 4px solid #F37021 !important;
         border-radius: 8px;
         padding: 20px;
@@ -479,7 +478,7 @@ st.markdown(f"""
     /* WRAPPER DE GRÁFICOS */
     .card-chart-wrapper {{
         background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         border-left: 5px solid #F37021 !important;
         border-radius: 8px;
         padding: 18px;
@@ -500,7 +499,7 @@ st.markdown(f"""
     /* CARDS DE EFICIÊNCIA */
     .eff-card-box {{
         background-color: #F8FAFC !important;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         border-left: 4px solid #F37021 !important;
         padding: 14px 16px !important;
         border-radius: 6px !important;
@@ -538,7 +537,7 @@ st.markdown(f"""
         border-radius: 4px;
         font-size: 0.8rem;
         font-weight: 600;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         margin-top: 6px;
     }}
     .badge-tool-tag {{
@@ -549,7 +548,7 @@ st.markdown(f"""
         border-radius: 4px;
         font-size: 0.78rem;
         font-weight: 600;
-        border: 1px solid #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
         margin: 2px;
     }}
 
@@ -648,7 +647,7 @@ with nav_c2:
     st.markdown(f"""
     <div class="council-box-header">
         {cft_img_html}
-        <div style="height:32px; width:1px; background-color:#1E293B;"></div>
+        <div style="height:32px; width:1px; background-color:#CBD5E1;"></div>
         {crea_img_html}
         <div class="council-text-title">
             HABILITAÇÃO TÉCNICA
@@ -794,7 +793,7 @@ with tab_resumo:
     with comp1:
         st.markdown("""
         <div class="card-pro-content">
-            <h4 style="color: #0F172A !important;">📅 Planejamento e Gestão</h4>
+            <span class="card-project-title">📅 Planejamento e Gestão</span>
             <p>Estruturação de governança em PMO e controle físico-financeiro de Capex/Opex através de EAP e Caminho Crítico (CPM). Elaboração de histogramas de recursos, curvas S de avanço e matrizes probabilísticas de risco com Primavera P6 e MS Project. Foco em previsibilidade contratual, otimização de lead time e alinhamento estratégico entre planejamento executivo e rotinas de campo.</p>
             <span class="badge-tool-tag">Primavera P6</span><span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">PMO / PCP</span><span class="badge-tool-tag">Gestão de Riscos</span>
         </div>
@@ -802,7 +801,7 @@ with tab_resumo:
         
         st.markdown("""
         <div class="card-pro-content">
-            <h4 style="color: #0F172A !important;">📊 Processos e Dados</h4>
+            <span class="card-project-title">📊 Processos e Dados</span>
             <p>Engenharia de dados aplicada à otimização operacional e automação de rotinas industriais. Desenvolvimento de pipelines de dados em Python e bancos SQLite para rastreabilidade de ativos e auditorias técnicas. Aplicação de Lean Six Sigma (DMAIC, VSM e Kaizen) com modelagem de dashboards em Power BI para monitoramento de KPIs estratégicos, eliminação de gargalos e tomada de decisão ágil.</p>
             <span class="badge-tool-tag">Python</span><span class="badge-tool-tag">SQL / SQLite</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">Lean Six Sigma</span>
         </div>
@@ -810,7 +809,7 @@ with tab_resumo:
         
         st.markdown("""
         <div class="card-pro-content">
-            <h4 style="color: #0F172A !important;">🏛️ Infraestrutura e Normas</h4>
+            <span class="card-project-title">🏛️ Infraestrutura e Normas</span>
             <p>Concepção e homologação de infraestruturas elétricas e de telecomunicações de alta disponibilidade. Certificação internacional Furukawa FCP Master para redes ópticas e Data Centers. Aprovação de mais de 20 projetos de subestações e baixa tensão junto à CPFL (GED-13), coordenação integral de processos de PPCI/AVCB e emissão de laudos de engenharia legal com respaldo via CREA e CFT.</p>
             <span class="badge-tool-tag">Telecom (FCP Master)</span><span class="badge-tool-tag">AVCB</span><span class="badge-tool-tag">CPFL / GED-13</span><span class="badge-tool-tag">NRs / ABNT</span>
         </div>
@@ -819,7 +818,7 @@ with tab_resumo:
     with comp2:
         st.markdown("""
         <div class="card-pro-content">
-            <h4 style="color: #0F172A !important;">📐 Projetos e Modelagem</h4>
+            <span class="card-project-title">📐 Projetos e Modelagem</span>
             <p>Engenharia de detalhamento e modelagem paramétrica em ambiente BIM 5D, integrando geometria 3D, cronograma e orçamentação (B.O.Q.). Compatibilização multidisciplinar com detecção de interferências (Clash Detection) em Navisworks e Revit. Cálculo e detalhamento de estruturas metálicas (Pipe Racks), tubulações em Plant 3D e ativos mecânicos em SolidWorks com total conformidade ABNT.</p>
             <span class="badge-tool-tag">Revit (BIM 5D)</span><span class="badge-tool-tag">SolidWorks</span><span class="badge-tool-tag">Plant 3D</span><span class="badge-tool-tag">AutoCAD Avançado</span>
         </div>
@@ -827,7 +826,7 @@ with tab_resumo:
         
         st.markdown("""
         <div class="card-pro-content">
-            <h4 style="color: #0F172A !important;">🔧 Manutenção e Ativos</h4>
+            <span class="card-project-title">🔧 Manutenção e Ativos</span>
             <p>Gestão da confiabilidade e integridade operacional de ativos de missão crítica sob metodologia RCM e TPM. Elaboração e auditoria de PMOC hospitalar/industrial (Anvisa e NBR 7256) em sistemas de climatização e utilidades. Monitoramento de KPIs de performance (OEE, MTBF e MTTR), implementação de rotinas preditivas (termografia e vibração) e parametrização de ordens via IBM Maximo.</p>
             <span class="badge-tool-tag">IBM Maximo</span><span class="badge-tool-tag">TPM</span><span class="badge-tool-tag">OEE / Confiabilidade</span><span class="badge-tool-tag">PMOC / RCM</span>
         </div>
@@ -840,7 +839,7 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021 !important;">L. Parice</h4>
+            <span class="card-project-title" style="color:#F37021 !important; margin:0;">L. Parice</span>
             <span class="badge-cft-tag">05/2026 - Atual</span>
         </div>
         <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Engenheiro de Planejamento e Processos</p>
@@ -858,7 +857,7 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021 !important;">Autônomo</h4>
+            <span class="card-project-title" style="color:#F37021 !important; margin:0;">Autônomo</span>
             <span class="badge-cft-tag">01/2025 - Atual</span>
         </div>
         <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Engenheiro Consultor de Projetos e Instalações</p>
@@ -875,7 +874,7 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021 !important;">Tracevia S/A</h4>
+            <span class="card-project-title" style="color:#F37021 !important; margin:0;">Tracevia S/A</span>
             <span class="badge-cft-tag">08/2025 - 11/2025</span>
         </div>
         <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Engenheiro de Planejamento</p>
@@ -892,7 +891,7 @@ with tab_experiencia:
     st.markdown("""
     <div class="card-pro-content">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <h4 style="margin:0; color:#F37021 !important;">Grupo Garcia</h4>
+            <span class="card-project-title" style="color:#F37021 !important; margin:0;">Grupo Garcia</span>
             <span class="badge-cft-tag">03/2018 - 01/2025</span>
         </div>
         <p style="font-weight:700; color:#0F172A !important; margin-bottom:8px;">Supervisor de Projetos</p>
@@ -1573,7 +1572,7 @@ with tab_acervo:
             st.markdown(f"""
             <div class="card-pro-content" style="margin-bottom: 12px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                    <h4 style="margin:0; color:#0F172A !important;">{row['titulo']}</h4>
+                    <span class="card-project-title" style="margin:0;">{row['titulo']}</span>
                     <span class="badge-cft-tag">{row['conselho']} • {row['id_doc']}</span>
                 </div>
                 <p style="margin:2px 0 6px 0; color:#475569; font-size:0.88rem;">
@@ -1595,7 +1594,7 @@ with tab_formacao:
     with f_col1:
         st.markdown("""
         <div class="card-pro-content">
-            <h4 style="color: #0F172A !important;">🎓 Ensino Superior & Pós-Graduações</h4>
+            <span class="card-project-title">🎓 Ensino Superior & Pós-Graduações</span>
             <ul>
                 <li><b>Pós-graduação em Engenharia de Controle e Automação</b> – Faculdade Anhanguera (Concluído 01/2026)</li>
                 <li><b>Pós-graduação em Engenharia de Estruturas Metálicas</b> – Faculdade Anhanguera (Concluído 01/2026)</li>
@@ -1611,7 +1610,7 @@ with tab_formacao:
     with f_col2:
         st.markdown("""
         <div class="card-pro-content">
-            <h4 style="color: #0F172A !important;">⚙️ Formações Técnicas (ETEC)</h4>
+            <span class="card-project-title">⚙️ Formações Técnicas (ETEC)</span>
             <ul>
                 <li><b>Técnico em Mecânica (2021)</b> – ETEC Aristóteles Ferreira</li>
                 <li><b>Especialização Técnica em Gestão de Projetos (2020)</b> – ETEC Praia Grande</li>
@@ -1626,7 +1625,7 @@ with tab_formacao:
         
     st.markdown("""
     <div class="card-pro-content">
-        <h4 style="color: #0F172A !important;">🌐 Certificações Internacionais & Habilitações</h4>
+        <span class="card-project-title">🌐 Certificações Internacionais & Habilitações</span>
         <ul>
             <li><b>Certificações:</b> Autodesk Certified User (ACU), Furukawa FCP Professional e Furukawa FCP Master.</li>
             <li><b>Idiomas:</b> Inglês (técnico para leitura), Espanhol (básico).</li>
