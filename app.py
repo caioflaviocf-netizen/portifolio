@@ -812,7 +812,10 @@ with tab_resumo:
             <span class="card-project-title">📅 Planejamento e Gestão</span>
             <p>Estruturação de governança em PMO e controle físico-financeiro de Capex/Opex através de EAP e Caminho Crítico (CPM). Elaboração de histogramas de recursos, curvas S de avanço e matrizes probabilísticas de risco com Primavera P6 e MS Project. Foco em previsibilidade contratual, otimização de lead time e alinhamento estratégico entre planejamento executivo e rotinas de campo.</p>
             <div class="card-pro-tools">
-                <span class="badge-tool-tag">Primavera P6</span><span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">PMO / PCP</span><span class="badge-tool-tag">Gestão de Riscos</span>
+                <span class="badge-tool-tag">Primavera P6</span>
+                <span class="badge-tool-tag">MS Project</span>
+                <span class="badge-tool-tag">PMO / PCP</span>
+                <span class="badge-tool-tag">Gestão de Riscos</span>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -822,7 +825,10 @@ with tab_resumo:
             <span class="card-project-title">📊 Processos e Dados</span>
             <p>Engenharia de dados aplicada à otimização operacional e automação de rotinas industriais. Desenvolvimento de pipelines de dados em Python e bancos SQLite para rastreabilidade de ativos e auditorias técnicas. Aplicação de Lean Six Sigma (DMAIC, VSM e Kaizen) com modelagem de dashboards em Power BI para monitoramento de KPIs estratégicos, eliminação de gargalos e tomada de decisão ágil.</p>
             <div class="card-pro-tools">
-                <span class="badge-tool-tag">Python</span><span class="badge-tool-tag">SQL / SQLite</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">Lean Six Sigma</span>
+                <span class="badge-tool-tag">Python</span>
+                <span class="badge-tool-tag">SQL / SQLite</span>
+                <span class="badge-tool-tag">Power BI</span>
+                <span class="badge-tool-tag">Lean Six Sigma</span>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -832,7 +838,10 @@ with tab_resumo:
             <span class="card-project-title">🏛️ Infraestrutura e Normas</span>
             <p>Concepção e homologação de infraestruturas elétricas e de telecomunicações de alta disponibilidade. Certificação internacional Furukawa FCP Master para redes ópticas e Data Centers. Aprovação de mais de 20 projetos de subestações e baixa tensão junto à CPFL (GED-13), coordenação integral de processos de PPCI/AVCB e emissão de laudos de engenharia legal com respaldo via CREA e CFT.</p>
             <div class="card-pro-tools">
-                <span class="badge-tool-tag">Telecom (FCP Master)</span><span class="badge-tool-tag">AVCB</span><span class="badge-tool-tag">CPFL / GED-13</span><span class="badge-tool-tag">NRs / ABNT</span>
+                <span class="badge-tool-tag">Telecom (FCP Master)</span>
+                <span class="badge-tool-tag">AVCB</span>
+                <span class="badge-tool-tag">CPFL / GED-13</span>
+                <span class="badge-tool-tag">NRs / ABNT</span>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -843,7 +852,10 @@ with tab_resumo:
             <span class="card-project-title">📐 Projetos e Modelagem</span>
             <p>Engenharia de detalhamento e modelagem paramétrica em ambiente BIM 5D, integrando geometria 3D, cronograma e orçamentação (B.O.Q.). Compatibilização multidisciplinar com detecção de interferências (Clash Detection) em Navisworks e Revit. Cálculo e detalhamento de estruturas metálicas (Pipe Racks), tubulações em Plant 3D e ativos mecânicos em SolidWorks com total conformidade ABNT.</p>
             <div class="card-pro-tools">
-                <span class="badge-tool-tag">Revit (BIM 5D)</span><span class="badge-tool-tag">SolidWorks</span><span class="badge-tool-tag">Plant 3D</span><span class="badge-tool-tag">AutoCAD Avançado</span>
+                <span class="badge-tool-tag">Revit (BIM 5D)</span>
+                <span class="badge-tool-tag">SolidWorks</span>
+                <span class="badge-tool-tag">Plant 3D</span>
+                <span class="badge-tool-tag">AutoCAD Avançado</span>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -853,7 +865,24 @@ with tab_resumo:
             <span class="card-project-title">🔧 Manutenção e Ativos</span>
             <p>Gestão da confiabilidade e integridade operacional de ativos de missão crítica sob metodologia RCM e TPM. Elaboração e auditoria de PMOC hospitalar/industrial (Anvisa e NBR 7256) em sistemas de climatização e utilidades. Monitoramento de KPIs de performance (OEE, MTBF e MTTR), implementação de rotinas preditivas (termografia e vibração) e parametrização de ordens via IBM Maximo.</p>
             <div class="card-pro-tools">
-                <span class="badge-tool-tag">IBM Maximo</span><span class="badge-tool-tag">TPM</span><span class="badge-tool-tag">OEE / Confiabilidade</span><span class="badge-tool-tag">PMOC / RCM</span>
+                <span class="badge-tool-tag">IBM Maximo</span>
+                <span class="badge-tool-tag">TPM</span>
+                <span class="badge-tool-tag">OEE / Confiabilidade</span>
+                <span class="badge-tool-tag">PMOC / RCM</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="card-pro-content">
+            <span class="card-project-title">🤝 Liderança e Integração</span>
+            <p>Liderança de equipes multidisciplinares e coordenação de frentes simultâneas de trabalho. Atuação como elo estratégico entre engenharia, suprimentos e campo, assegurando o cumprimento de metas contratuais, SLAs e rentabilidade operacional. Aplicação de governança baseada em diretrizes PMBOK e metodologias ágeis para mitigar riscos, integrar interfaces e otimizar recursos em projetos complexos.</p>
+            <div class="card-pro-tools">
+                <span class="badge-tool-tag">PMBOK</span>
+                <span class="badge-tool-tag">Gestão de Contratos</span>
+                <span class="badge-tool-tag">Scrum / Kanban</span>
+                <span class="badge-tool-tag">Planejamento de Campo</span>
+                <span class="badge-tool-tag">Gestão de Conflitos</span>
             </div>
         </div>
         """, unsafe_allow_html=True)
