@@ -4,6 +4,7 @@ import plotly.express as px
 import base64
 import os
 import re
+import requests
 
 # -----------------------------------------------------------------------------
 # 1. CONFIGURAÇÃO DA PÁGINA
@@ -441,6 +442,24 @@ st.markdown(f"""
         margin-right: 4px !important;
     }}
 
+    /* DETALHES DE CONTATO ESCUROS */
+    .contact-info-list {{
+        margin-top: 18px !important;
+        padding-top: 14px !important;
+        border-top: 1px solid #E2E8F0 !important;
+        font-size: 0.92rem !important;
+        line-height: 1.8 !important;
+    }}
+    .contact-info-item {{
+        color: #0F172A !important;
+        font-weight: 700 !important;
+        margin-bottom: 6px !important;
+    }}
+    .contact-info-item span {{
+        color: #475569 !important;
+        font-weight: 600 !important;
+    }}
+
     /* BOTÃO WHATSAPP */
     .btn-whatsapp-direct {{
         display: inline-flex;
@@ -459,6 +478,8 @@ st.markdown(f"""
         transition: all 0.2s ease;
         margin-bottom: 12px;
         border: none;
+        width: 100%;
+        text-align: center;
     }}
     .btn-whatsapp-direct:hover {{
         background-color: #1EBE5D !important;
@@ -1741,11 +1762,11 @@ with tab_contato:
             <a href="https://wa.me/5511920960786?text=Ol%C3%A1%20Engenheiro%20Caio%20Barbosa,%20acessei%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20solicitar%20informa%C3%A7%C3%B5es%20t%C3%A9cnicas/uma%20proposta." target="_blank" class="btn-whatsapp-direct">
                 📱 Iniciar Conversa no WhatsApp
             </a>
-            <div style="margin-top: 15px; font-size: 0.88rem; color: #475569 !important;">
-                📍 <b>Localização:</b> São Paulo, SP - Brasil<br>
-                📱 <b>Telefone Direto:</b> (11) 92096-0786<br>
-                📧 <b>E-mail Oficial:</b> caioflavio.cf@gmail.com<br>
-                🌐 <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/caiobarbosas" target="_blank" style="color: #F37021 !important; font-weight: 700;">linkedin.com/in/caiobarbosas</a>
+            <div class="contact-info-list">
+                <div class="contact-info-item">📍 Localização: <span>São Paulo, SP - Brasil</span></div>
+                <div class="contact-info-item">📱 Telefone Direto: <span>(11) 92096-0786</span></div>
+                <div class="contact-info-item">📧 E-mail Oficial: <span>caioflavio.cf@gmail.com</span></div>
+                <div class="contact-info-item">🌐 LinkedIn: <a href="https://www.linkedin.com/in/caiobarbosas" target="_blank" style="color: #F37021 !important; font-weight: 700;">linkedin.com/in/caiobarbosas</a></div>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -1795,8 +1816,33 @@ with tab_contato:
                 if not nome_contato or not email_contato or not mensagem_contato:
                     st.error("⚠️ Por favor, preencha seu Nome, E-mail e a Descrição da demanda para prosseguir.")
                 else:
-                    st.success("✅ Mensagem estruturada com sucesso! O formulário de envio foi registrado.")
-                    st.info(f"📋 **Resumo da Solicitação:**\n\n* **Remetente:** {nome_contato} ({email_contato})\n* **Telefone:** {telefone_contato}\n* **Assunto:** {assunto_contato}\n* **Anexo enviado:** {anexo_arquivo.name if anexo_arquivo else 'Nenhum'}")
+                    with st.spinner("Enviando mensagem para caioflavio.cf@gmail.com..."):
+                        try:
+                            # Endpoint gratuito do FormSubmit para envio direto ao seu e-mail
+                            url_endpoint = "https://formsubmit.co/ajax/caioflavio.cf@gmail.com"
+                            
+                            payload = {
+                                "Nome/Empresa": nome_contato,
+                                "Telefone": telefone_contato,
+                                "Email_Retorno": email_contato,
+                                "_subject": f"[Portfólio Engenharia] {assunto_contato} - {nome_contato}",
+                                "Mensagem": mensagem_contato,
+                                "_template": "table"
+                            }
+                            
+                            files = {}
+                            if anexo_arquivo is not None:
+                                files = {"attachment": (anexo_arquivo.name, anexo_arquivo.getvalue())}
+                            
+                            resposta = requests.post(url_endpoint, data=payload, files=files if files else None, timeout=25)
+                            
+                            if resposta.status_code == 200:
+                                st.success("✅ Mensagem e anexo enviados com sucesso para **caioflavio.cf@gmail.com**!")
+                                st.info("ℹ️ **Nota de Primeiro Envio:** Na primeira vez em que receber uma mensagem pelo FormSubmit, clique no botão de ativação enviado pelo serviço ao seu Gmail para autorizar os próximos envios automaticamente.")
+                            else:
+                                st.warning("⚠️ Não foi possível conectar ao servidor de e-mail no momento. Por favor, utilize o botão de WhatsApp ao lado para contato imediato.")
+                        except Exception as e:
+                            st.warning("⚠️ Ocorreu uma oscilação na rede de envio. Por favor, envie diretamente pelo WhatsApp ao lado.")
 
 # -----------------------------------------------------------------------------
 # 11. FOOTER CORPORATIVO
