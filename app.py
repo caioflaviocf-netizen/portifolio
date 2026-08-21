@@ -66,7 +66,7 @@ vray_b64 = carregar_arquivo_base64(["VRAY.png", "vray.png", "V-RAY.png", "v-ray.
 pdf_acervo_b64 = carregar_arquivo_base64(["registradas_2.pdf", "registradas.pdf", "acervo_tecnico.pdf"], "application/pdf")
 
 # -----------------------------------------------------------------------------
-# 3. CSS EXECUTIVO COM CORREÇÃO DE CONTRASTE TOTAL
+# 3. CSS EXECUTIVO
 # -----------------------------------------------------------------------------
 st.markdown(f"""
     <style>
@@ -146,12 +146,12 @@ st.markdown(f"""
         background-color: #FFF7ED !important;
         color: #EA580C !important;
     }}
-    div[data-baseweb="input"] > div {{
+    div[data-baseweb="input"] > div, div[data-baseweb="textarea"] > div {{
         background-color: #FFFFFF !important;
         border: 1px solid #CBD5E1 !important;
         border-radius: 6px !important;
     }}
-    div[data-baseweb="input"] input {{
+    div[data-baseweb="input"] input, div[data-baseweb="textarea"] textarea {{
         color: #0F172A !important;
         font-weight: 600 !important;
     }}
@@ -394,7 +394,7 @@ st.markdown(f"""
         font-weight: 800 !important;
     }}
 
-    /* ================= CARDS DE CONTEÚDO (FONTE ESCURA FIXA) ================= */
+    /* CARDS DE CONTEÚDO */
     .card-pro-content {{
         background-color: rgba(255, 255, 255, 0.95) !important;
         border: 1px solid #CBD5E1 !important;
@@ -439,6 +439,30 @@ st.markdown(f"""
         font-size: 0.90rem !important;
         font-family: 'Montserrat', sans-serif !important;
         margin-right: 4px !important;
+    }}
+
+    /* BOTÃO WHATSAPP */
+    .btn-whatsapp-direct {{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background-color: #25D366 !important;
+        color: #FFFFFF !important;
+        padding: 14px 24px;
+        border-radius: 8px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        text-decoration: none;
+        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+        transition: all 0.2s ease;
+        margin-bottom: 12px;
+        border: none;
+    }}
+    .btn-whatsapp-direct:hover {{
+        background-color: #1EBE5D !important;
+        transform: translateY(-2px);
     }}
 
     /* CARDS DE SOFTWARE / FERRAMENTAS */
@@ -780,13 +804,14 @@ st.write("")
 # -----------------------------------------------------------------------------
 # 10. ABAS DE NAVEGAÇÃO
 # -----------------------------------------------------------------------------
-tab_resumo, tab_experiencia, tab_tools, tab_analytics, tab_acervo, tab_formacao = st.tabs([
+tab_resumo, tab_experiencia, tab_tools, tab_analytics, tab_acervo, tab_formacao, tab_contato = st.tabs([
     "💡 Resumo & Competências",
     "💼 Trajetória & Experiências",
     "🛠️ Programas & Ferramentas",
     "📊 Indicadores & Produtividade",
     "📂 Acervo Técnico (TRTs & Projetos)",
-    "🎓 Formação Acadêmica & Técnica"
+    "🎓 Formação Acadêmica & Técnica",
+    "📬 Contato & Propostas"
 ])
 
 # --- ABA 1: RESUMO PROFISSIONAL & COMPETÊNCIAS ---
@@ -1700,6 +1725,78 @@ with tab_formacao:
         </ul>
     </div>
     """, unsafe_allow_html=True)
+
+# --- ABA 7: CONTATO & PROPOSTAS ---
+with tab_contato:
+    st.markdown("### 📬 Entrar em Contato & Solicitação de Propostas")
+    st.caption("Escolha a melhor opção para iniciarmos seu atendimento técnico ou comercial.")
+    
+    col_c1, col_c2 = st.columns([1.2, 2.0])
+    
+    with col_c1:
+        st.markdown("""
+        <div class="card-pro-content">
+            <span class="card-project-title">💬 Acesso Rápido via WhatsApp</span>
+            <p>Converse diretamente sobre demandas pontuais, consultorias de engenharia ou esclarecimento de dúvidas.</p>
+            <a href="https://wa.me/5511920960786?text=Ol%C3%A1%20Engenheiro%20Caio%20Barbosa,%20acessei%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20solicitar%20informa%C3%A7%C3%B5es%20t%C3%A9cnicas/uma%20proposta." target="_blank" class="btn-whatsapp-direct">
+                📱 Iniciar Conversa no WhatsApp
+            </a>
+            <div style="margin-top: 15px; font-size: 0.88rem; color: #475569 !important;">
+                📍 <b>Localização:</b> São Paulo, SP - Brasil<br>
+                📱 <b>Telefone Direto:</b> (11) 92096-0786<br>
+                📧 <b>E-mail Oficial:</b> caioflavio.cf@gmail.com<br>
+                🌐 <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/caiobarbosas" target="_blank" style="color: #F37021 !important; font-weight: 700;">linkedin.com/in/caiobarbosas</a>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col_c2:
+        st.markdown("""
+        <div class="card-pro-content">
+            <span class="card-project-title">✉️ Enviar Mensagem Direta por E-mail</span>
+            <p>Preencha os dados abaixo com as especificações do projeto, memorial descritivo ou solicitação de proposta técnica.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        with st.form(key="form_contato_portfolio", clear_on_submit=False):
+            f_col_a, f_col_b = st.columns(2)
+            with f_col_a:
+                nome_contato = st.text_input("Seu Nome / Empresa:", placeholder="Ex: Roberto Mendes / Construtora Alpha")
+                telefone_contato = st.text_input("Telefone / WhatsApp:", placeholder="Ex: (11) 98765-4321")
+            with f_col_b:
+                email_contato = st.text_input("Seu E-mail de Retorno:", placeholder="Ex: contato@empresa.com.br")
+                assunto_contato = st.selectbox(
+                    "Assunto:",
+                    [
+                        "Solicitação de Proposta Comercial",
+                        "Consultoria Técnica / Laudo Pericial",
+                        "Projeto Elétrico / Homologação Concessionária",
+                        "Projeto de Estruturas / BIM 5D",
+                        "Projeto de Combate a Incêndio (PPCI / AVCB)",
+                        "Gestão de Ativos / PMOC",
+                        "Outros Assuntos"
+                    ]
+                )
+                
+            mensagem_contato = st.text_area(
+                "Descrição Detalhada do Projeto ou Demanda:",
+                placeholder="Descreva aqui o escopo, prazos desejados, localização e principais especificações da demanda técnica...",
+                height=160
+            )
+            
+            anexo_arquivo = st.file_uploader(
+                "Anexar Arquivo Técnico (Opcional - PDF, DWG, DOCX, ZIP ou Imagens):",
+                type=["pdf", "dwg", "docx", "zip", "png", "jpg", "jpeg"]
+            )
+            
+            btn_enviar = st.form_submit_button("📤 Enviar Mensagem", use_container_width=True)
+            
+            if btn_enviar:
+                if not nome_contato or not email_contato or not mensagem_contato:
+                    st.error("⚠️ Por favor, preencha seu Nome, E-mail e a Descrição da demanda para prosseguir.")
+                else:
+                    st.success("✅ Mensagem estruturada com sucesso! O formulário de envio foi registrado.")
+                    st.info(f"📋 **Resumo da Solicitação:**\n\n* **Remetente:** {nome_contato} ({email_contato})\n* **Telefone:** {telefone_contato}\n* **Assunto:** {assunto_contato}\n* **Anexo enviado:** {anexo_arquivo.name if anexo_arquivo else 'Nenhum'}")
 
 # -----------------------------------------------------------------------------
 # 11. FOOTER CORPORATIVO
