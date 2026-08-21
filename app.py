@@ -68,518 +68,82 @@ pdf_acervo_b64 = carregar_arquivo_base64(["registradas_2.pdf", "registradas.pdf"
 # -----------------------------------------------------------------------------
 # 3. CSS EXECUTIVO
 # -----------------------------------------------------------------------------
-st.markdown(f"""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
-    /* BACKGROUND TEMÁTICO DE CONSTRUÇÃO COM GUINDASTE / PÔR DO SOL */
-    .stApp {{
-        background: linear-gradient(rgba(11, 15, 25, 0.88), rgba(15, 23, 42, 0.92)), 
-                    url('{bg_image_css}') center/cover fixed no-repeat !important;
-        font-family: 'Inter', sans-serif !important;
-    }}
-
-    h1, h2, h3, h4, h5, h6 {{
-        font-family: 'Montserrat', sans-serif !important;
-        color: #F8FAFC !important;
-        font-weight: 700;
-    }}
-    p, span, label, li {{
-        color: #E2E8F0 !important;
-    }}
-
-    /* CARD DE HABILITAÇÃO DOS CONSELHOS */
-    .council-box-header {{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
-        background-color: #FFFFFF !important;
-        padding: 8px 18px;
-        border-radius: 8px;
-        border: 1px solid #CBD5E1;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }}
-    .council-text-title {{
-        font-size: 0.75rem !important;
-        font-weight: 800 !important;
-        color: #0F172A !important;
-        line-height: 1.2 !important;
-        text-align: left !important;
-        font-family: 'Montserrat', sans-serif !important;
-    }}
-    .council-text-badge {{
-        color: #C2410C !important;
-        font-weight: 800 !important;
-        font-size: 0.75rem !important;
-        display: block;
-    }}
-
-    /* SELECTBOX & DROPDOWN */
-    div[data-baseweb="select"] > div {{
-        background-color: #FFFFFF !important;
-        color: #0F172A !important;
-        border: 1px solid #CBD5E1 !important;
-        border-radius: 6px !important;
-    }}
-    div[data-baseweb="select"] span {{
-        color: #0F172A !important;
-        font-weight: 600 !important;
-    }}
-    div[data-baseweb="select"] svg {{
-        fill: #EA580C !important;
-    }}
-    div[data-baseweb="popover"], div[data-baseweb="menu"], ul[role="listbox"] {{
-        background-color: #FFFFFF !important;
-        border: 1px solid #CBD5E1 !important;
-        border-radius: 8px !important;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
-    }}
-    li[role="option"] {{
-        background-color: #FFFFFF !important;
-        color: #0F172A !important;
-        font-weight: 600 !important;
-        font-size: 0.90rem !important;
-        padding: 10px 14px !important;
-    }}
-    li[role="option"]:hover, li[role="option"][aria-selected="true"] {{
-        background-color: #FFF7ED !important;
-        color: #EA580C !important;
-    }}
-    div[data-baseweb="input"] > div {{
-        background-color: #FFFFFF !important;
-        border: 1px solid #CBD5E1 !important;
-        border-radius: 6px !important;
-    }}
-    div[data-baseweb="input"] input {{
-        color: #0F172A !important;
-        font-weight: 600 !important;
-    }}
-
-    /* TOP UTILITY BAR */
-    .top-ribbon-container {{
-        background-color: rgba(11, 15, 25, 0.95) !important;
-        backdrop-filter: blur(8px);
-        padding: 10px 24px;
-        border-radius: 8px 8px 0 0;
-        margin-top: -35px;
-        margin-bottom: 16px;
-        border-bottom: 3px solid #F37021;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    }}
-    .top-ribbon-container span, .top-ribbon-container p {{
-        font-size: 0.86rem;
-        font-weight: 500;
-        color: #FFFFFF !important;
-    }}
-    .top-ribbon-links a {{
-        color: #FB923C !important;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 0.86rem;
-        margin-left: 18px;
-    }}
-    .top-ribbon-links a:hover {{
-        color: #F37021 !important;
-        text-decoration: underline;
-    }}
-
-    /* HERO BANNER */
-    .hero-banner-pro {{
-        position: relative;
-        background: linear-gradient(135deg, rgba(11, 15, 25, 0.92) 0%, rgba(15, 23, 42, 0.95) 60%, rgba(243, 112, 33, 0.8) 100%), 
-                    url('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?w=1600&q=80') center/cover no-repeat !important;
+st.markdown("""
+<style>
+    /* Card responsivo com ajuste automático de padding e borda */
+    .hero-card {
+        background: linear-gradient(135deg, rgba(16, 26, 43, 0.95), rgba(10, 17, 30, 0.98));
+        border-left: 5px solid #FF6B00;
         border-radius: 12px;
-        padding: 40px 45px;
-        margin-bottom: 25px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        border-left: 8px solid #F37021;
-    }}
-    .hero-flex-wrapper {{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 30px;
-    }}
-    .hero-profile-photo {{
-        width: 195px;
-        height: 195px;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: top center;
-        border: 4px solid #F37021;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-        background-color: #0B0F19;
-        flex-shrink: 0;
-    }}
-    .hero-pretitle-pro {{
-        color: #FB923C !important;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 0.95rem;
-        font-weight: 800;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-    }}
-    .hero-headline-pro {{
-        color: #FFFFFF !important;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 2.35rem;
-        font-weight: 900;
-        line-height: 1.2;
-        margin: 0 0 14px 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }}
-    .hero-description-pro {{
-        color: #F1F5F9 !important;
-        font-size: 1.02rem;
-        line-height: 1.6;
-        max-width: 820px;
-        margin-bottom: 20px;
-    }}
-    .hero-description-pro b {{
-        color: #FFFFFF !important;
-    }}
-    .hero-btn-action {{
-        display: inline-block;
-        background-color: #F37021 !important;
-        color: #FFFFFF !important;
-        padding: 13px 30px;
-        border-radius: 6px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 0.94rem;
+        padding: clamp(16px, 4vw, 36px);
+        margin: 10px auto;
+        max-width: 900px;
+        box-sizing: border-box;
+        overflow: hidden;
+        word-wrap: break-word;
+    }
+
+    /* Subtítulo / Tagline superior */
+    .hero-tag {
+        color: #FF8C33;
+        font-weight: 700;
+        font-size: clamp(0.75rem, 2vw, 0.95rem);
         letter-spacing: 1px;
         text-transform: uppercase;
-        text-decoration: none;
-        box-shadow: 0 4px 14px rgba(243, 112, 33, 0.4);
-        transition: all 0.2s ease;
-        border: 1px solid #FB923C;
-    }}
-    .hero-btn-action:hover {{
-        background-color: #D95D0F !important;
-        transform: translateY(-2px);
-    }}
-
-    /* Z-INDEX & OVERFLOW */
-    [data-testid="stHorizontalBlock"] {{
-        overflow: visible !important;
-        position: relative !important;
-        z-index: 50 !important;
-    }}
-    div[data-testid="column"] {{
-        overflow: visible !important;
-        position: relative !important;
-    }}
-    .element-container {{
-        overflow: visible !important;
-    }}
-    div[data-testid="stTabs"] {{
-        position: relative !important;
-        z-index: 1 !important;
-    }}
-
-    /* KPI CARDS */
-    .kpi-hover-card {{
-        position: relative;
-        background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #CBD5E1 !important;
-        border-top: 4px solid #F37021 !important;
-        border-radius: 8px;
-        padding: 18px 12px 14px 12px;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }}
-    .kpi-hover-card:hover {{
-        transform: translateY(-3px);
-        box-shadow: 0 10px 22px rgba(243, 112, 33, 0.25);
-        border-color: #F37021 !important;
-        z-index: 99999 !important;
-    }}
-    .kpi-num-pro {{
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.95rem;
-        font-weight: 800;
-        color: #F37021 !important;
-        margin: 0;
-    }}
-    .kpi-label-pro {{
-        font-size: 0.76rem;
-        font-weight: 700;
-        color: #1E293B !important;
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-        margin-top: 4px;
-        margin-bottom: 4px;
-    }}
-    .kpi-hint-tag {{
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: #EA580C !important;
-        display: inline-flex;
-        align-items: center;
-        gap: 3px;
-        opacity: 0.85;
-    }}
-    
-    .kpi-tooltip-box {{
-        visibility: hidden;
-        opacity: 0;
-        width: 310px;
-        background-color: #0B0F19;
-        text-align: left;
-        border-radius: 8px;
-        padding: 14px 16px;
-        position: absolute;
-        z-index: 9999999 !important;
-        top: calc(100% + 12px);
-        left: 50%;
-        transform: translateX(-50%) translateY(-6px);
-        box-shadow: 0 16px 36px rgba(0,0,0,0.45);
-        border: 2px solid #F37021;
-        font-size: 0.83rem;
-        line-height: 1.55;
-        transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
-        pointer-events: none;
-    }}
-    .kpi-tooltip-box, .kpi-tooltip-box span, .kpi-tooltip-box p, .kpi-tooltip-box b {{
-        color: #FFFFFF !important;
-    }}
-    .kpi-tooltip-box::before {{
-        content: "";
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        margin-left: -8px;
-        border-width: 8px;
-        border-style: solid;
-        border-color: transparent transparent #F37021 transparent;
-    }}
-    .kpi-hover-card:hover .kpi-tooltip-box {{
-        visibility: visible;
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }}
-
-    /* ABAS */
-    button[data-baseweb="tab"] {{
-        background-color: rgba(255, 255, 255, 0.90) !important;
-        padding: 12px 18px !important;
-        border-radius: 6px 6px 0 0 !important;
-        border: 1px solid #CBD5E1 !important;
-        border-bottom: none !important;
-        margin-right: 4px !important;
-    }}
-    button[data-baseweb="tab"] div, button[data-baseweb="tab"] p {{
-        color: #1E293B !important;
-        font-weight: 700 !important;
-        font-size: 0.90rem !important;
-    }}
-    button[data-baseweb="tab"][aria-selected="true"] {{
-        background-color: #FFF7ED !important;
-        border-top: 3px solid #F37021 !important;
-        border-bottom: none !important;
-    }}
-    button[data-baseweb="tab"][aria-selected="true"] div, button[data-baseweb="tab"][aria-selected="true"] p {{
-        color: #C2410C !important;
-        font-weight: 800 !important;
-    }}
-
-    /* CARDS DE CONTEÚDO */
-    .card-pro-content {{
-        background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #CBD5E1 !important;
-        border-left: 5px solid #F37021 !important;
-        border-radius: 8px;
-        padding: 22px;
-        margin-bottom: 18px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }}
-    .card-pro-content h4 {{
-        color: #0F172A !important;
-        font-size: 1.15rem;
-        font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 8px;
-    }}
-    .card-pro-content p, .card-pro-content li {{
-        color: #1E293B !important;
-        font-size: 0.94rem;
-        line-height: 1.6;
-    }}
-    .card-pro-content ul {{
-        margin: 6px 0;
-        padding-left: 20px;
-    }}
-
-    /* CARDS DE SOFTWARE / FERRAMENTAS */
-    .card-tool-box {{
-        background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #CBD5E1 !important;
-        border-top: 4px solid #F37021 !important;
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 18px;
-        height: 100%;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }}
-    .card-tool-header {{
-        display: flex;
-        align-items: center;
-        gap: 14px;
         margin-bottom: 12px;
-    }}
-    .card-tool-img {{
-        width: 52px;
-        height: 52px;
-        object-fit: contain;
-        border-radius: 6px;
-        background-color: #F8FAFC;
-        padding: 4px;
-        border: 1px solid #E2E8F0;
-    }}
-    .card-tool-name {{
-        font-family: 'Montserrat', sans-serif !important;
-        font-size: 1.05rem !important;
-        font-weight: 800 !important;
-        color: #0F172A !important;
-        margin: 0 !important;
-    }}
-    .card-tool-category {{
-        font-size: 0.76rem !important;
-        font-weight: 700 !important;
-        color: #EA580C !important;
+    }
+
+    /* Título com escala fluida para não quebrar lateralmente */
+    .hero-title {
+        color: #FFFFFF;
+        font-weight: 900;
+        font-size: clamp(1.4rem, 5vw, 2.5rem);
+        line-height: 1.15;
         text-transform: uppercase;
-        margin: 0 !important;
-    }}
-    .card-tool-desc {{
-        color: #334155 !important;
-        font-size: 0.88rem !important;
-        line-height: 1.55 !important;
-        margin-bottom: 10px !important;
-    }}
+        margin: 0 0 16px 0;
+        hyphens: auto;
+    }
 
-    /* WRAPPER DE GRÁFICOS */
-    .card-chart-wrapper {{
-        background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #CBD5E1 !important;
-        border-left: 5px solid #F37021 !important;
-        border-radius: 8px;
-        padding: 18px;
-        margin-bottom: 18px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        overflow: hidden !important;
-        position: relative !important;
-    }}
-    .card-chart-wrapper h4 {{
-        color: #0F172A !important;
-        font-size: 1.12rem !important;
-        font-weight: 800 !important;
-        font-family: 'Montserrat', sans-serif !important;
-        margin-top: 0 !important;
-        margin-bottom: 12px !important;
-    }}
+    /* Corpo do texto explicativo */
+    .hero-body {
+        color: #E0E6ED;
+        font-size: clamp(0.85rem, 2.2vw, 1rem);
+        line-height: 1.5;
+        margin-bottom: 24px;
+    }
 
-    /* CARDS DE EFICIÊNCIA */
-    .eff-card-box {{
-        background-color: #F8FAFC !important;
-        border: 1px solid #CBD5E1 !important;
-        border-left: 4px solid #F37021 !important;
-        padding: 14px 16px !important;
-        border-radius: 6px !important;
-        margin-bottom: 12px !important;
-    }}
-    .eff-card-title {{
-        color: #0F172A !important;
-        font-weight: 800 !important;
-        font-size: 0.95rem !important;
-        font-family: 'Montserrat', sans-serif !important;
-        margin-bottom: 4px !important;
-    }}
-    .eff-card-desc {{
-        color: #334155 !important;
-        font-size: 0.90rem !important;
-        line-height: 1.55 !important;
-        margin: 0 !important;
-    }}
-
-    /* BADGES */
-    .badge-cft-tag {{
-        background-color: #FFF7ED !important;
-        color: #C2410C !important;
-        padding: 4px 10px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        border: 1px solid #FDBA74 !important;
-    }}
-    .badge-norma-tag {{
+    /* Botão responsivo */
+    .btn-acervo {
         display: inline-block;
-        background-color: #F1F5F9 !important;
-        color: #0F172A !important;
-        padding: 3px 8px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        border: 1px solid #CBD5E1 !important;
-        margin-top: 6px;
-    }}
-    .badge-tool-tag {{
-        display: inline-block;
-        background-color: #F8FAFC !important;
-        color: #0F172A !important;
-        padding: 3px 8px;
-        border-radius: 4px;
-        font-size: 0.78rem;
-        font-weight: 600;
-        border: 1px solid #CBD5E1 !important;
-        margin: 2px;
-    }}
-
-    /* FOOTER */
-    .footer-pro {{
-        background-color: #0B0F19 !important;
-        padding: 35px 20px !important;
-        border-radius: 8px !important;
-        margin-top: 40px !important;
-        text-align: center !important;
-        border-top: 4px solid #F37021 !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
-    }}
-    .footer-pro p, .footer-pro span, .footer-pro div {{
-        color: #F8FAFC !important;
-    }}
-    .footer-pro .footer-title {{
+        width: 100%;
+        max-width: 380px;
+        background-color: #FF6B00;
         color: #FFFFFF !important;
-        font-size: 1.15rem !important;
-        font-weight: 800 !important;
-        margin-bottom: 6px !important;
-        font-family: 'Montserrat', sans-serif !important;
-        letter-spacing: 0.5px !important;
-    }}
-    .footer-pro .footer-subtitle {{
-        color: #E2E8F0 !important;
-        font-size: 0.90rem !important;
-        font-weight: 500 !important;
-        margin-bottom: 14px !important;
-    }}
-    .footer-pro .footer-copy {{
-        color: #94A3B8 !important;
-        font-size: 0.82rem !important;
-        margin: 0 !important;
-    }}
-    </style>
-""", unsafe_allow_html=True)
+        font-weight: 800;
+        font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+        text-align: center;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        transition: background 0.3s ease;
+    }
 
+    .btn-acervo:hover {
+        background-color: #E05D00;
+    }
+</style>
+
+<div class="hero-card">
+    <div class="hero-tag">⚡ ENGENHARIA MULTIDISCIPLINAR & GESTÃO TÉCNICA</div>
+    <div class="hero-title">POTENCIALIZE A PRODUTIVIDADE E A CONFIABILIDADE DA SUA OPERAÇÃO</div>
+    <div class="hero-body">
+        Soluções completas em <b>Engenharia de Produção, Mecânica e Infraestrutura Elétrica</b>. Mais de 10 anos de atuação como Responsável Técnico <b>(CREA/CFT)</b>, integrando compatibilização em <b>BIM 5D</b>, <b>Engenharia de Dados</b> e metodologias preditivas para assegurar máxima confiabilidade operacional, segurança jurídica e eficiência em ativos de missão crítica.
+    </div>
+    <a href="#" class="btn-acervo">📄 CONSULTAR ACERVO TÉCNICO OFICIAL (PDF)</a>
+</div>
+""", unsafe_allow_html=True)
 # -----------------------------------------------------------------------------
 # 4. CONFIGURAÇÃO DE CONTROLE PLOTLY
 # -----------------------------------------------------------------------------
