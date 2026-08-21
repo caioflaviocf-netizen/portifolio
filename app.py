@@ -97,7 +97,7 @@ st.markdown(f"""
         background-color: #FFFFFF !important;
         padding: 8px 18px;
         border-radius: 8px;
-        border: 1px solid #CBD5E1;
+        border: 1px solid #1E293B;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }}
     .council-text-title {{
@@ -119,7 +119,7 @@ st.markdown(f"""
     div[data-baseweb="select"] > div {{
         background-color: #FFFFFF !important;
         color: #0F172A !important;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         border-radius: 6px !important;
     }}
     div[data-baseweb="select"] span {{
@@ -131,7 +131,7 @@ st.markdown(f"""
     }}
     div[data-baseweb="popover"], div[data-baseweb="menu"], ul[role="listbox"] {{
         background-color: #FFFFFF !important;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         border-radius: 8px !important;
         box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
     }}
@@ -148,7 +148,7 @@ st.markdown(f"""
     }}
     div[data-baseweb="input"] > div {{
         background-color: #FFFFFF !important;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         border-radius: 6px !important;
     }}
     div[data-baseweb="input"] input {{
@@ -290,7 +290,7 @@ st.markdown(f"""
     .kpi-hover-card {{
         position: relative;
         background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         border-top: 4px solid #F37021 !important;
         border-radius: 8px;
         padding: 18px 12px 14px 12px;
@@ -375,7 +375,7 @@ st.markdown(f"""
         background-color: rgba(255, 255, 255, 0.90) !important;
         padding: 12px 18px !important;
         border-radius: 6px 6px 0 0 !important;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         border-bottom: none !important;
         margin-right: 4px !important;
     }}
@@ -429,7 +429,7 @@ st.markdown(f"""
     /* CARDS DE SOFTWARE / FERRAMENTAS */
     .card-tool-box {{
         background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         border-top: 4px solid #F37021 !important;
         border-radius: 8px;
         padding: 20px;
@@ -479,7 +479,7 @@ st.markdown(f"""
     /* WRAPPER DE GRÁFICOS */
     .card-chart-wrapper {{
         background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         border-left: 5px solid #F37021 !important;
         border-radius: 8px;
         padding: 18px;
@@ -500,7 +500,7 @@ st.markdown(f"""
     /* CARDS DE EFICIÊNCIA */
     .eff-card-box {{
         background-color: #F8FAFC !important;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         border-left: 4px solid #F37021 !important;
         padding: 14px 16px !important;
         border-radius: 6px !important;
@@ -538,7 +538,7 @@ st.markdown(f"""
         border-radius: 4px;
         font-size: 0.8rem;
         font-weight: 600;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         margin-top: 6px;
     }}
     .badge-tool-tag {{
@@ -549,7 +549,7 @@ st.markdown(f"""
         border-radius: 4px;
         font-size: 0.78rem;
         font-weight: 600;
-        border: 1px solid #CBD5E1 !important;
+        border: 1px solid #1E293B !important;
         margin: 2px;
     }}
 
@@ -648,7 +648,7 @@ with nav_c2:
     st.markdown(f"""
     <div class="council-box-header">
         {cft_img_html}
-        <div style="height:32px; width:1px; background-color:#CBD5E1;"></div>
+        <div style="height:32px; width:1px; background-color:#1E293B;"></div>
         {crea_img_html}
         <div class="council-text-title">
             HABILITAÇÃO TÉCNICA
