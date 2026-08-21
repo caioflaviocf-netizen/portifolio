@@ -836,7 +836,7 @@ with tab_resumo:
         <div class="card-pro-content">
             <span class="card-project-title">🤝 Liderança e Integração</span>
             <p>Liderança de equipes multidisciplinares e coordenação de frentes simultâneas de trabalho. Atuação como elo estratégico entre engenharia, suprimentos e campo, assegurando o cumprimento de metas contratuais, SLAs e rentabilidade operacional. Aplicação de governança baseada em diretrizes PMBOK e metodologias ágeis para mitigar riscos, integrar interfaces e otimizar recursos em projetos complexos.</p>
-            <span class="badge-tool-tag">PMBOK</span><span class="badge-tool-tag">Gestão de Contratos</span><span class="badge-tool-tag">Liderança Ágil</span><span class="badge-tool-tag">Planejamento de Campo</span>
+            <span class="badge-tool-tag">PMBOK</span><span class="badge-tool-tag">Gestão de Contratos</span><span class="badge-tool-tag">Scrum / Kanban</span><span class="badge-tool-tag">Planejamento de Campo</span>
         </div>
         """, unsafe_allow_html=True)
         
