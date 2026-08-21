@@ -66,7 +66,7 @@ vray_b64 = carregar_arquivo_base64(["VRAY.png", "vray.png", "V-RAY.png", "v-ray.
 pdf_acervo_b64 = carregar_arquivo_base64(["registradas_2.pdf", "registradas.pdf", "acervo_tecnico.pdf"], "application/pdf")
 
 # -----------------------------------------------------------------------------
-# 3. CSS EXECUTIVO
+# 3. CSS EXECUTIVO COM CORREÇÃO DE CONTRASTE TOTAL
 # -----------------------------------------------------------------------------
 st.markdown(f"""
     <style>
@@ -423,6 +423,22 @@ st.markdown(f"""
     .card-pro-content ul {{
         margin: 6px 0;
         padding-left: 20px;
+    }}
+
+    /* RÓTULOS DE FERRAMENTAS E DETALHES */
+    .card-pro-tools {{
+        margin-top: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+    }}
+    .card-pro-tools-label {{
+        color: #0F172A !important;
+        font-weight: 800 !important;
+        font-size: 0.90rem !important;
+        font-family: 'Montserrat', sans-serif !important;
+        margin-right: 4px !important;
     }}
 
     /* CARDS DE SOFTWARE / FERRAMENTAS */
@@ -795,7 +811,9 @@ with tab_resumo:
         <div class="card-pro-content">
             <span class="card-project-title">📅 Planejamento e Gestão</span>
             <p>Estruturação de governança em PMO e controle físico-financeiro de Capex/Opex através de EAP e Caminho Crítico (CPM). Elaboração de histogramas de recursos, curvas S de avanço e matrizes probabilísticas de risco com Primavera P6 e MS Project. Foco em previsibilidade contratual, otimização de lead time e alinhamento estratégico entre planejamento executivo e rotinas de campo.</p>
-            <span class="badge-tool-tag">Primavera P6</span><span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">PMO / PCP</span><span class="badge-tool-tag">Gestão de Riscos</span>
+            <div class="card-pro-tools">
+                <span class="badge-tool-tag">Primavera P6</span><span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">PMO / PCP</span><span class="badge-tool-tag">Gestão de Riscos</span>
+            </div>
         </div>
         """, unsafe_allow_html=True)
         
@@ -803,7 +821,9 @@ with tab_resumo:
         <div class="card-pro-content">
             <span class="card-project-title">📊 Processos e Dados</span>
             <p>Engenharia de dados aplicada à otimização operacional e automação de rotinas industriais. Desenvolvimento de pipelines de dados em Python e bancos SQLite para rastreabilidade de ativos e auditorias técnicas. Aplicação de Lean Six Sigma (DMAIC, VSM e Kaizen) com modelagem de dashboards em Power BI para monitoramento de KPIs estratégicos, eliminação de gargalos e tomada de decisão ágil.</p>
-            <span class="badge-tool-tag">Python</span><span class="badge-tool-tag">SQL / SQLite</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">Lean Six Sigma</span>
+            <div class="card-pro-tools">
+                <span class="badge-tool-tag">Python</span><span class="badge-tool-tag">SQL / SQLite</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">Lean Six Sigma</span>
+            </div>
         </div>
         """, unsafe_allow_html=True)
         
@@ -811,7 +831,9 @@ with tab_resumo:
         <div class="card-pro-content">
             <span class="card-project-title">🏛️ Infraestrutura e Normas</span>
             <p>Concepção e homologação de infraestruturas elétricas e de telecomunicações de alta disponibilidade. Certificação internacional Furukawa FCP Master para redes ópticas e Data Centers. Aprovação de mais de 20 projetos de subestações e baixa tensão junto à CPFL (GED-13), coordenação integral de processos de PPCI/AVCB e emissão de laudos de engenharia legal com respaldo via CREA e CFT.</p>
-            <span class="badge-tool-tag">Telecom (FCP Master)</span><span class="badge-tool-tag">AVCB</span><span class="badge-tool-tag">CPFL / GED-13</span><span class="badge-tool-tag">NRs / ABNT</span>
+            <div class="card-pro-tools">
+                <span class="badge-tool-tag">Telecom (FCP Master)</span><span class="badge-tool-tag">AVCB</span><span class="badge-tool-tag">CPFL / GED-13</span><span class="badge-tool-tag">NRs / ABNT</span>
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -820,7 +842,9 @@ with tab_resumo:
         <div class="card-pro-content">
             <span class="card-project-title">📐 Projetos e Modelagem</span>
             <p>Engenharia de detalhamento e modelagem paramétrica em ambiente BIM 5D, integrando geometria 3D, cronograma e orçamentação (B.O.Q.). Compatibilização multidisciplinar com detecção de interferências (Clash Detection) em Navisworks e Revit. Cálculo e detalhamento de estruturas metálicas (Pipe Racks), tubulações em Plant 3D e ativos mecânicos em SolidWorks com total conformidade ABNT.</p>
-            <span class="badge-tool-tag">Revit (BIM 5D)</span><span class="badge-tool-tag">SolidWorks</span><span class="badge-tool-tag">Plant 3D</span><span class="badge-tool-tag">AutoCAD Avançado</span>
+            <div class="card-pro-tools">
+                <span class="badge-tool-tag">Revit (BIM 5D)</span><span class="badge-tool-tag">SolidWorks</span><span class="badge-tool-tag">Plant 3D</span><span class="badge-tool-tag">AutoCAD Avançado</span>
+            </div>
         </div>
         """, unsafe_allow_html=True)
         
@@ -828,18 +852,12 @@ with tab_resumo:
         <div class="card-pro-content">
             <span class="card-project-title">🔧 Manutenção e Ativos</span>
             <p>Gestão da confiabilidade e integridade operacional de ativos de missão crítica sob metodologia RCM e TPM. Elaboração e auditoria de PMOC hospitalar/industrial (Anvisa e NBR 7256) em sistemas de climatização e utilidades. Monitoramento de KPIs de performance (OEE, MTBF e MTTR), implementação de rotinas preditivas (termografia e vibração) e parametrização de ordens via IBM Maximo.</p>
-            <span class="badge-tool-tag">IBM Maximo</span><span class="badge-tool-tag">TPM</span><span class="badge-tool-tag">OEE / Confiabilidade</span><span class="badge-tool-tag">PMOC / RCM</span>
+            <div class="card-pro-tools">
+                <span class="badge-tool-tag">IBM Maximo</span><span class="badge-tool-tag">TPM</span><span class="badge-tool-tag">OEE / Confiabilidade</span><span class="badge-tool-tag">PMOC / RCM</span>
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
-        st.markdown("""
-        <div class="card-pro-content">
-            <span class="card-project-title">🤝 Liderança e Integração</span>
-            <p>Liderança de equipes multidisciplinares e coordenação de frentes simultâneas de trabalho. Atuação como elo estratégico entre engenharia, suprimentos e campo, assegurando o cumprimento de metas contratuais, SLAs e rentabilidade operacional. Aplicação de governança baseada em diretrizes PMBOK e metodologias ágeis para mitigar riscos, integrar interfaces e otimizar recursos em projetos complexos.</p>
-            <span class="badge-tool-tag">PMBOK</span><span class="badge-tool-tag">Gestão de Contratos</span><span class="badge-tool-tag">Scrum / Kanban</span><span class="badge-tool-tag">Planejamento de Campo</span>
-        </div>
-        """, unsafe_allow_html=True)
-        
 # --- ABA 2: EXPERIÊNCIAS PROFISSIONAIS ---
 with tab_experiencia:
     st.markdown("### 💼 Histórico & Experiência Profissional")
@@ -858,7 +876,10 @@ with tab_experiencia:
             <li>Coordenação da calibração rastreável de sensores das redes de frio sob padrão <b>RBC (Rede Brasileira de Calibração)</b>.</li>
             <li>Estruturação de planos de contingência com redundâncias elétricas para chillers e controle de estoque crítico (<b>MRO</b>).</li>
         </ul>
-        <div style="margin-top:10px;"><b>Ferramentas:</b> <span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">Python / SQL</span><span class="badge-tool-tag">Excel Avançado</span></div>
+        <div class="card-pro-tools">
+            <span class="card-pro-tools-label">Ferramentas:</span>
+            <span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">Python / SQL</span><span class="badge-tool-tag">Excel Avançado</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
     
@@ -875,7 +896,10 @@ with tab_experiencia:
             <li>Projetos de baixa, média e alta tensão (<b>até 800kVA</b>) e redes de missão crítica.</li>
             <li><b>Engenharia Legal:</b> coordenação técnica de processos de AVCB, laudos periciais e inspeções prediais com 100% de conformidade técnica.</li>
         </ul>
-        <div style="margin-top:10px;"><b>Ferramentas:</b> <span class="badge-tool-tag">Revit (BIM 5D)</span><span class="badge-tool-tag">SolidWorks</span><span class="badge-tool-tag">AutoCAD</span><span class="badge-tool-tag">Navisworks</span><span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">Python / SQL</span><span class="badge-tool-tag">IBM Maximo</span></div>
+        <div class="card-pro-tools">
+            <span class="card-pro-tools-label">Ferramentas:</span>
+            <span class="badge-tool-tag">Revit (BIM 5D)</span><span class="badge-tool-tag">SolidWorks</span><span class="badge-tool-tag">AutoCAD</span><span class="badge-tool-tag">Navisworks</span><span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">Python / SQL</span><span class="badge-tool-tag">IBM Maximo</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
     
@@ -892,7 +916,10 @@ with tab_experiencia:
             <li>Dashboards estratégicos em <b>Power BI</b> que eliminaram falhas de auditoria.</li>
             <li>Levantamento de materiais (<b>B.O.Q.</b>) e padronização de fluxos operacionais.</li>
         </ul>
-        <div style="margin-top:10px;"><b>Ferramentas:</b> <span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">Python</span><span class="badge-tool-tag">SQLite</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">PMBOK</span><span class="badge-tool-tag">Jira / Trello</span></div>
+        <div class="card-pro-tools">
+            <span class="card-pro-tools-label">Ferramentas:</span>
+            <span class="badge-tool-tag">MS Project</span><span class="badge-tool-tag">Python</span><span class="badge-tool-tag">SQLite</span><span class="badge-tool-tag">Power BI</span><span class="badge-tool-tag">PMBOK</span><span class="badge-tool-tag">Jira / Trello</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
     
@@ -909,7 +936,10 @@ with tab_experiencia:
             <li>Compatibilização em <b>AutoCAD e Revit</b> com eliminação sistemática de interferências em obra.</li>
             <li><b>Incremento de 10% no faturamento operacional</b> pela redução drástica de retrabalhos.</li>
         </ul>
-        <div style="margin-top:10px;"><b>Ferramentas:</b> <span class="badge-tool-tag">Revit (BIM)</span><span class="badge-tool-tag">AutoCAD</span><span class="badge-tool-tag">Navisworks</span><span class="badge-tool-tag">BIM 360</span><span class="badge-tool-tag">Trello / Asana</span></div>
+        <div class="card-pro-tools">
+            <span class="card-pro-tools-label">Ferramentas:</span>
+            <span class="badge-tool-tag">Revit (BIM)</span><span class="badge-tool-tag">AutoCAD</span><span class="badge-tool-tag">Navisworks</span><span class="badge-tool-tag">BIM 360</span><span class="badge-tool-tag">Trello / Asana</span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1583,13 +1613,13 @@ with tab_acervo:
                     <span class="card-project-title" style="margin:0;">{row['titulo']}</span>
                     <span class="badge-cft-tag">{row['conselho']} • {row['id_doc']}</span>
                 </div>
-                <p style="margin:2px 0 6px 0; color:#475569; font-size:0.88rem;">
+                <p style="margin:2px 0 6px 0; color:#475569 !important; font-size:0.88rem;">
                     🏢 <b>Cliente:</b> {row['cliente_empresa']} &nbsp;|&nbsp;
                     📍 <b>Local:</b> {row['cidade']} &nbsp;|&nbsp;
                     ⚙️ <b>Disciplina:</b> {row['disciplina']} &nbsp;|&nbsp;
-                    📅 <b>Ano:</b> <b style="color:#F37021;">{row['ano']}</b>
+                    📅 <b>Ano:</b> <b style="color:#F37021 !important;">{row['ano']}</b>
                 </p>
-                <p style="margin:6px 0 8px 0; font-size:0.93rem; color:#1E293B;">{row['descricao']}</p>
+                <p style="margin:6px 0 8px 0; font-size:0.93rem; color:#1E293B !important;">{row['descricao']}</p>
                 <span class="badge-norma-tag">📌 Normas: {row['normas_atendidas']}</span>
             </div>
             """, unsafe_allow_html=True)
