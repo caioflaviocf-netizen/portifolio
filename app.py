@@ -272,24 +272,6 @@ st.markdown(f"""
         transform: translateY(-2px);
     }}
 
-    /* Z-INDEX & OVERFLOW */
-    [data-testid="stHorizontalBlock"] {{
-        overflow: visible !important;
-        position: relative !important;
-        z-index: 50 !important;
-    }}
-    div[data-testid="column"] {{
-        overflow: visible !important;
-        position: relative !important;
-    }}
-    .element-container {{
-        overflow: visible !important;
-    }}
-    div[data-testid="stTabs"] {{
-        position: relative !important;
-        z-index: 1 !important;
-    }}
-
     /* KPI CARDS */
     .kpi-hover-card {{
         position: relative;
@@ -1816,7 +1798,6 @@ with tab_contato:
                 else:
                     with st.spinner("Enviando mensagem para caioflavio.cf@gmail.com..."):
                         try:
-                            # Endpoint oficial e estrito para envio sem anexo
                             url_endpoint = "https://formsubmit.co/ajax/caioflavio.cf@gmail.com"
                             
                             payload = {
@@ -1825,30 +1806,31 @@ with tab_contato:
                                 "Email_Retorno": email_contato,
                                 "_subject": f"[Portfólio Engenharia] {assunto_contato} - {nome_contato}",
                                 "Mensagem": mensagem_contato,
-                                "_template": "table"
+                                "_template": "table",
+                                "_captcha": "false"
                             }
                             
-                            # Formata como JSON estrito (sem multipart/form-data)
                             headers = {
                                 "Accept": "application/json",
-                                "Content-Type": "application/json"
+                                "Content-Type": "application/json",
+                                "Origin": "https://caio-barbosa-portfolio.streamlit.app",
+                                "Referer": "https://caio-barbosa-portfolio.streamlit.app/"
                             }
                             
-                            # O uso de json=payload elimina o problema de recusa do servidor
                             resposta = requests.post(url_endpoint, json=payload, headers=headers, timeout=15)
                             
                             if resposta.status_code == 200:
                                 res_json = resposta.json()
                                 
-                                # Correção: Lendo o Booleano real 'True' retornado pela API do FormSubmit
+                                # Verifica o retorno (tanto booleano como texto)
                                 if res_json.get("success") == True or str(res_json.get("success")).lower() == "true":
                                     st.success("✅ Mensagem enviada com sucesso para **caioflavio.cf@gmail.com**!")
                                 else:
-                                    st.warning(f"⚠️ A mensagem foi enviada ao servidor, mas o status foi: {res_json.get('message', 'Desconhecido')}. Verifique o e-mail de ativação.")
+                                    st.warning(f"⚠️ Status de servidor: {res_json.get('message', 'Desconhecido')}. Verifique o e-mail de ativação.")
                             else:
-                                st.warning(f"⚠️ Resposta do Servidor: {resposta.status_code}. Utilize o botão do WhatsApp ao lado.")
+                                st.warning(f"⚠️ Acesso bloqueado pelo provedor ({resposta.status_code}). Utilize o botão do WhatsApp ao lado.")
                         except Exception as e:
-                            st.error(f"⚠️ Falha de conexão: {str(e)}. Por favor, inicie a conversa pelo WhatsApp.")
+                            st.error(f"⚠️ Erro de execução ({str(e)}). Por favor, inicie a conversa pelo WhatsApp.")
 
 # -----------------------------------------------------------------------------
 # 11. FOOTER CORPORATIVO
