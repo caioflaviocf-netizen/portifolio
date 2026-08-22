@@ -272,6 +272,24 @@ st.markdown(f"""
         transform: translateY(-2px);
     }}
 
+    /* Z-INDEX & OVERFLOW */
+    [data-testid="stHorizontalBlock"] {{
+        overflow: visible !important;
+        position: relative !important;
+        z-index: 50 !important;
+    }}
+    div[data-testid="column"] {{
+        overflow: visible !important;
+        position: relative !important;
+    }}
+    .element-container {{
+        overflow: visible !important;
+    }}
+    div[data-testid="stTabs"] {{
+        position: relative !important;
+        z-index: 1 !important;
+    }}
+
     /* KPI CARDS */
     .kpi-hover-card {{
         position: relative;
@@ -380,8 +398,8 @@ st.markdown(f"""
         font-weight: 800 !important;
     }}
 
-    /* CARDS DE CONTEÚDO */
-    .card-pro-content {{
+    /* CARDS DE CONTEÚDO E GRÁFICOS */
+    .card-pro-content, .card-chart-wrapper {{
         background-color: rgba(255, 255, 255, 0.95) !important;
         border: 1px solid #CBD5E1 !important;
         border-left: 5px solid #F37021 !important;
@@ -390,16 +408,19 @@ st.markdown(f"""
         margin-bottom: 18px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }}
-    .card-project-title {{
+    
+    /* TITULOS DOS CARDS (PROTEGIDOS CONTRA OVERRIDE DO TEMA ESCURO) */
+    .card-project-title, .card-chart-title {{
         font-family: 'Montserrat', sans-serif !important;
         color: #0F172A !important;
         font-size: 1.15rem !important;
         font-weight: 800 !important;
         line-height: 1.3 !important;
         margin-top: 0 !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 12px !important;
         display: block !important;
     }}
+    
     .card-pro-content p, 
     .card-pro-content li {{
         color: #1E293B !important;
@@ -519,27 +540,6 @@ st.markdown(f"""
         font-size: 0.88rem !important;
         line-height: 1.55 !important;
         margin-bottom: 10px !important;
-    }}
-
-    /* WRAPPER DE GRÁFICOS */
-    .card-chart-wrapper {{
-        background-color: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid #CBD5E1 !important;
-        border-left: 5px solid #F37021 !important;
-        border-radius: 8px;
-        padding: 18px;
-        margin-bottom: 18px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        overflow: hidden !important;
-        position: relative !important;
-    }}
-    .card-chart-wrapper h4 {{
-        color: #0F172A !important;
-        font-size: 1.12rem !important;
-        font-weight: 800 !important;
-        font-family: 'Montserrat', sans-serif !important;
-        margin-top: 0 !important;
-        margin-bottom: 12px !important;
     }}
 
     /* CARDS DE EFICIÊNCIA */
@@ -1468,7 +1468,7 @@ with tab_analytics:
     g1_col, g2_col = st.columns(2)
     
     with g1_col:
-        st.markdown("""<div class="card-chart-wrapper"><h4>📌 Distribuição por Disciplina Técnica</h4>""", unsafe_allow_html=True)
+        st.markdown("""<div class="card-chart-wrapper"><span class="card-chart-title">📌 Distribuição por Disciplina Técnica</span>""", unsafe_allow_html=True)
         
         df_disc_raw = df_projetos['disciplina'].value_counts().reset_index()
         df_disc_raw.columns = ['Disciplina', 'Quantidade']
@@ -1516,7 +1516,7 @@ with tab_analytics:
         st.markdown('</div>', unsafe_allow_html=True)
 
     with g2_col:
-        st.markdown("""<div class="card-chart-wrapper"><h4>📈 Evolução Histórica de Registros (2018 - 2026)</h4>""", unsafe_allow_html=True)
+        st.markdown("""<div class="card-chart-wrapper"><span class="card-chart-title">📈 Evolução Histórica de Registros (2018 - 2026)</span>""", unsafe_allow_html=True)
         
         df_ano_count = df_projetos.groupby('ano').size().reset_index(name='Projetos')
         df_ano_count = df_ano_count.sort_values('ano')
@@ -1566,7 +1566,7 @@ with tab_analytics:
     g3_col, g4_col = st.columns(2)
     
     with g3_col:
-        st.markdown("""<div class="card-chart-wrapper"><h4>🏢 Volume por Polo Regional de Atuação</h4>""", unsafe_allow_html=True)
+        st.markdown("""<div class="card-chart-wrapper"><span class="card-chart-title">🏢 Volume por Polo Regional de Atuação</span>""", unsafe_allow_html=True)
         
         df_cidade_count = df_projetos['cidade'].value_counts().reset_index()
         df_cidade_count.columns = ['Cidade', 'Volume']
@@ -1612,7 +1612,7 @@ with tab_analytics:
         st.markdown('</div>', unsafe_allow_html=True)
 
     with g4_col:
-        st.markdown("""<div class="card-pro-content"><h4>🎯 Indicadores de Eficiência de Processos</h4>""", unsafe_allow_html=True)
+        st.markdown("""<div class="card-pro-content"><span class="card-project-title">🎯 Indicadores de Eficiência de Processos</span>""", unsafe_allow_html=True)
         
         st.markdown("""
         <div class="eff-card-box">
@@ -1822,7 +1822,6 @@ with tab_contato:
                             if resposta.status_code == 200:
                                 res_json = resposta.json()
                                 
-                                # Verifica o retorno (tanto booleano como texto)
                                 if res_json.get("success") == True or str(res_json.get("success")).lower() == "true":
                                     st.success("✅ Mensagem enviada com sucesso para **caioflavio.cf@gmail.com**!")
                                 else:
