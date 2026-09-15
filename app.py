@@ -664,7 +664,7 @@ st.markdown("""
 <div class="top-ribbon-container">
     <div class="top-ribbon-text">
         <span>📍 São Paulo, SP - Brasil</span> &nbsp;|&nbsp; 
-        <span>📱 (11) 92096-0786</span> &nbsp;|&nbsp; 
+        <span>📱 (11) 91736-3257</span> &nbsp;|&nbsp; 
         <span>📧 caioflavio.cf@gmail.com</span>
     </div>
     <div class="top-ribbon-links">
